@@ -101,4 +101,11 @@ public class ComparatorsTest {
       verify( comparator ).compare( A, A );
    }//End Method
    
+   @Test public void shouldConvertStringToDoubleComparator(){
+      assertThat( Comparators.STRING_AS_NUMBER_ASCENDING.compare( "5", "8" ), lessThan( 0 ) );
+      assertThat( Comparators.STRING_AS_NUMBER_ASCENDING.compare( "50", "8" ), greaterThan( 0 ) );
+      assertThat( Comparators.STRING_AS_NUMBER_ASCENDING.compare( "anything", "8" ), lessThan( 0 ) );
+      assertThat( Comparators.STRING_AS_NUMBER_ASCENDING.compare( "5", "anything" ), greaterThan( 0 ) );
+   }//End Method
+   
 }// End Class

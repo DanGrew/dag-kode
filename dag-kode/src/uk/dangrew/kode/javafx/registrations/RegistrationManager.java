@@ -39,7 +39,7 @@ public class RegistrationManager {
     * Method to shut the manager down. This will unregister all {@link RegistrationImpl}s.
     */
    public void shutdown() {
-      registrations.forEach( registration -> registration.unregister() );
+      registrations.forEach( RegistrationImpl::unregister );
       registrations.clear();
    }//End Method
 

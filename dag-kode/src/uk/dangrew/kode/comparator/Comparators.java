@@ -39,7 +39,7 @@ public class Comparators {
    }// End Method
    
    /** Basic implementation of a {@link Double} {@link Comparator}.**/
-   private static final Comparator< Double > NUMBER_ASCENDING = new Comparator< Double >() {
+   public static final Comparator< Double > NUMBER_ASCENDING = new Comparator< Double >() {
       @Override public int compare( Double o1, Double o2 ) {
          Integer nullResult = compareForNullValues( o1, o2, true );
          if ( nullResult == null ) {
@@ -48,6 +48,35 @@ public class Comparators {
             return nullResult;
          }
       }
+   };
+   
+   /** Basic implementation of a {@link Double} {@link Comparator} converting the {@link String} value.**/
+   public static final Comparator< String > STRING_AS_NUMBER_ASCENDING = new Comparator< String >() {
+      
+      /** 
+       * Defensive {@link Double#valueOf(String)}.
+       * @param s the {@link String} to value of.
+       * @return the {@link Double} or null if invalid.
+       */
+      private Double valueOf( String s ) {
+         try {
+            return Double.valueOf( s );
+         } catch ( NumberFormatException e ) {
+            return null;
+         }
+      }//End Method
+      
+      /**
+       * {@inheritDoc}
+       */
+      @Override public int compare( String o1, String o2 ) {
+         Integer nullResult = compareForNullValues( o1, o2, true );
+         if ( nullResult == null ) {
+            return NUMBER_ASCENDING.compare( valueOf( o1 ), valueOf( o2 ) );
+         } else {
+            return nullResult;
+         }
+      }//End Method
    };
    
    /**
