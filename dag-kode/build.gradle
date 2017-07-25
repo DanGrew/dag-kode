@@ -16,7 +16,7 @@ allprojects {
  * VERSIONING: describe build and calculate build number
  */
 description = """Dan Grew's Development Kit"""
-group = 'kode'
+group = 'uk.dangrew'
 
 def buildNumberFromEnvironment = System.getenv()[ 'VERSION_NUMBER' ]
 def buildNumberForThisEnvironment = ( buildNumberFromEnvironment != null ? buildNumberFromEnvironment : 'WORKSPACE' ) 
@@ -113,3 +113,45 @@ task packageTests(type: Jar) {
   classifier = 'tests'
 }
 artifacts.archives packageTests
+
+/*
+ * REMOTE ARCHIVING: publish release candidates to bintray
+ */
+bintray {
+    user = bintrayUser
+    key = bintrayKey
+    configurations = ['archives']
+    publications = ['core']
+    
+    publish = true //auto publish everything
+    
+    pkg {
+        repo = 'dag-kode'
+        name = 'dag-kode'
+        userOrg = bintrayUser
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/DanGrew/dag-kode.git'
+        
+        version {
+            name = buildNumberForThisEnvironment
+            desc = 'Continuous Delivery rolling version'
+            released = new Date()
+        }
+    }
+}
+
+publishing {
+    publications {
+    	//publish standard core components - jar + tests
+        core(MavenPublication) {
+        	//publish all items
+            from components.java
+            
+        	//configure description
+            groupId group
+            artifactId 'dag-kode'
+            version version
+        }
+    }
+}
+
