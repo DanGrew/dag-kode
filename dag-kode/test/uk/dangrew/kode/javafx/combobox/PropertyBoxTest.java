@@ -24,7 +24,7 @@ import com.sun.javafx.application.PlatformImpl;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import uk.dangrew.kode.javafx.combobox.PropertyBox;
-import uk.dangrew.sd.graphics.launch.TestApplication;
+import uk.dangrew.kode.launch.TestApplication;
 
 /**
  * {@link PropertyBox} test.

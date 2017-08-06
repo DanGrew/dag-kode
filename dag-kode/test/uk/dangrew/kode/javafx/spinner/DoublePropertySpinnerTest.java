@@ -19,7 +19,7 @@ import com.sun.javafx.application.PlatformImpl;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.control.SpinnerValueFactory.DoubleSpinnerValueFactory;
-import uk.dangrew.sd.graphics.launch.TestApplication;
+import uk.dangrew.kode.launch.TestApplication;
 
 /**
  * {@link DoublePropertySpinner} test.

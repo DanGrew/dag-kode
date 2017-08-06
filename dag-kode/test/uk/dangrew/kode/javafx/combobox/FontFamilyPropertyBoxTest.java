@@ -23,9 +23,8 @@ import com.sun.javafx.application.PlatformImpl;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.text.Font;
-import uk.dangrew.kode.TestCommon;
+import uk.dangrew.kode.launch.TestApplication;
 import uk.dangrew.kode.styling.FontFamilies;
-import uk.dangrew.sd.graphics.launch.TestApplication;
 
 /**
  * {@link FontFamilyPropertyBox} test.

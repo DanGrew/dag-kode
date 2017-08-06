@@ -30,7 +30,7 @@ import uk.dangrew.kode.javafx.controls.DirectionControlListener;
 import uk.dangrew.kode.javafx.controls.DirectionControlType;
 import uk.dangrew.kode.javafx.controls.DirectionControls;
 import uk.dangrew.kode.javafx.style.JavaFxStyle;
-import uk.dangrew.sd.graphics.launch.TestApplication;
+import uk.dangrew.kode.launch.TestApplication;
 
 public class DirectionControlsTest {
 

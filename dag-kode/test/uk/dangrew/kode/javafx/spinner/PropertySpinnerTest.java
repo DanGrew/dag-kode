@@ -23,7 +23,7 @@ import com.sun.javafx.application.PlatformImpl;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.control.SpinnerValueFactory;
-import uk.dangrew.sd.graphics.launch.TestApplication;
+import uk.dangrew.kode.launch.TestApplication;
 
 /**
  * {@link PropertySpinner} test.

@@ -51,7 +51,7 @@ import uk.dangrew.kode.javafx.spinner.DoublePropertySpinner;
 import uk.dangrew.kode.javafx.spinner.IntegerPropertySpinner;
 import uk.dangrew.kode.javafx.spinner.PropertySpinner;
 import uk.dangrew.kode.javafx.style.JavaFxStyle;
-import uk.dangrew.sd.graphics.launch.TestApplication;
+import uk.dangrew.kode.launch.TestApplication;
 
 /**
  * {@link JavaFxStyle} test.

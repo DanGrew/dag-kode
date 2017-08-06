@@ -22,7 +22,7 @@ import uk.dangrew.kode.javafx.registrations.RegistrationManager;
 import uk.dangrew.kode.javafx.style.Conversions;
 import uk.dangrew.kode.javafx.style.JavaFxStyle;
 import uk.dangrew.kode.javafx.style.PropertyRowBuilder;
-import uk.dangrew.sd.graphics.launch.TestApplication;
+import uk.dangrew.kode.launch.TestApplication;
 
 public class PropertiesPaneTest {
 

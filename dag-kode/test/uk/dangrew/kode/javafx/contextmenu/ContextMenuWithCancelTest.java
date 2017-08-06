@@ -22,7 +22,7 @@ import com.sun.javafx.application.PlatformImpl;
 
 import javafx.scene.layout.BorderPane;
 import uk.dangrew.kode.javafx.contextmenu.ContextMenuWithCancel;
-import uk.dangrew.sd.graphics.launch.TestApplication;
+import uk.dangrew.kode.launch.TestApplication;
 
 /**
  * {@link ContextMenuWithCancel} test.

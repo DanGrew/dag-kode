@@ -15,8 +15,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import uk.dangrew.kode.TestCommon;
 import uk.dangrew.kode.observable.PrivatelyModifiableObservableListImpl;
-import uk.dangrew.sd.utility.TestCommon;
 
 /**
  * {@link MappedObservableStoreManagerImpl} test.

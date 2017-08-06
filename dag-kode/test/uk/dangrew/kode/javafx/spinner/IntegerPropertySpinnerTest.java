@@ -19,7 +19,7 @@ import com.sun.javafx.application.PlatformImpl;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory;
-import uk.dangrew.sd.graphics.launch.TestApplication;
+import uk.dangrew.kode.launch.TestApplication;
 
 /**
  * {@link IntegerPropertySpinner} test.

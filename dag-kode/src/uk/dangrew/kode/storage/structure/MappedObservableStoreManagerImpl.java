@@ -15,7 +15,7 @@ import java.util.function.Function;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import uk.dangrew.kode.observable.PrivatelyModifiableObservableListImpl;
-import uk.dangrew.sd.utility.synchronization.SynchronizedObservableList;
+import uk.dangrew.kode.synchronization.SynchronizedObservableList;
 
 /**
  * The {@link MappedObservableStoreManagerImpl} provides an implementation of the {@link ObjectStoreManager} that
