@@ -44,21 +44,17 @@ public class PropertiesPaneTest {
       
       row1 = new PropertyRowBuilder()
                .withLabelName( "First" )
-               .withProperty( new SimpleObjectProperty< Double >( 25.0 ) )
-               .allowEditing( true );
+               .withBinding( new BoundTextProperty( new SimpleObjectProperty< Double >( 25.0 ), true ) );
       row2 = new PropertyRowBuilder()
                .withLabelName( "Second" )
-               .withProperty( new SimpleObjectProperty< Double >( 3.0 ) )
-               .allowEditing( false );
+               .withBinding( new BoundTextProperty( new SimpleObjectProperty< Double >( 3.0 ), false ) );
       row3 = new PropertyRowBuilder()
                .withLabelName( "Third" )
-               .withProperty( new SimpleObjectProperty< Double >( 0.34857 ) )
-               .allowEditing( true );
+               .withBinding( new BoundTextProperty( new SimpleObjectProperty< Double >( 0.34857 ), true ) );
       rows = Arrays.asList( row1, row2, row3 );
       
       systemUnderTest = new PropertiesPane( 
                styling, 
-               conversions,
                TITLE, 
                row1, row2, row3 
       );
@@ -89,17 +85,18 @@ public class PropertiesPaneTest {
    @Test public void shouldHoldTextFieldsForEachProperty() {
       for ( int i = 0; i < rows.size(); i++ ) {
          TextField field = systemUnderTest.textFieldForRow( i );
-         assertThat( field.getText(), is( conversions.format( rows.get( i ).property().get() ) ) );
+         BoundTextProperty binding = ( BoundTextProperty ) rows.get( i ).binding();
+         assertThat( field.getText(), is( conversions.format( binding.property().get() ) ) );
          assertThat( GridPane.getRowIndex( field ), is( i ) );
          assertThat( GridPane.getColumnIndex( field ), is( 1 ) );
-         assertThat( field.isEditable(), is( rows.get( i ).isEditable() ) );
+         assertThat( field.isEditable(), is( binding.isEditable() ) );
       }
    }//End Method
    
    @Test public void shouldBindPropertiesForTextFields() {
       for ( int i = 0; i < rows.size(); i++ ) {
          TextField field = systemUnderTest.textFieldForRow( i );
-         ObjectProperty< Double > property = rows.get( i ).property();
+         ObjectProperty< Double > property = ( ( BoundTextProperty ) rows.get( i ).binding() ).property();
          
          assertThat( field.getText(), is( conversions.format( property.get() ) ) );
          field.setText( "35.0" );
@@ -111,6 +108,13 @@ public class PropertiesPaneTest {
    
    @Test public void shouldNotBeCollapsible() {
       assertThat( systemUnderTest.isCollapsible(), is( false ) );
+   }//End Method
+   
+   @Test public void shouldSetMaxWidthOnRegion(){
+      for ( int i = 0; i < rows.size(); i++ ) {
+         TextField field = systemUnderTest.textFieldForRow( i );
+         assertThat( field.getMaxWidth(), is( Double.MAX_VALUE ) );
+      }
    }//End Method
 
 }//End Class

@@ -8,7 +8,7 @@ import static org.mockito.Mockito.mock;
 import org.junit.Before;
 import org.junit.Test;
 
-import javafx.beans.property.ObjectProperty;
+import uk.dangrew.kode.javafx.custom.ResponsiveRegionProperty;
 
 public class PropertyRowBuilderTest {
 
@@ -20,8 +20,7 @@ public class PropertyRowBuilderTest {
    
    @Test public void shouldProvideDefaults(){
       assertThat( systemUnderTest.labelName(), is( "" ) );
-      assertThat( systemUnderTest.property(), is( nullValue() ) );
-      assertThat( systemUnderTest.isEditable(), is( true ) );
+      assertThat( systemUnderTest.binding(), is( nullValue() ) );
    }//End Method
 
    @Test public void shouldProvideLabelName() {
@@ -30,14 +29,9 @@ public class PropertyRowBuilderTest {
    }//End Method
    
    @Test public void shouldProvideProperty() {
-      ObjectProperty< Double > property = mock( ObjectProperty.class );
-      assertThat( systemUnderTest.withProperty( property ), is( systemUnderTest ) );
-      assertThat( systemUnderTest.property(), is( property ) );
+      ResponsiveRegionProperty property = mock( ResponsiveRegionProperty.class );
+      assertThat( systemUnderTest.withBinding( property ), is( systemUnderTest ) );
+      assertThat( systemUnderTest.binding(), is( property ) );
    }//End Method
    
-   @Test public void shouldProvideEditable() {
-      assertThat( systemUnderTest.allowEditing( true ), is( systemUnderTest ) );
-      assertThat( systemUnderTest.isEditable(), is( true ) );
-   }//End Method
-
 }//End Class

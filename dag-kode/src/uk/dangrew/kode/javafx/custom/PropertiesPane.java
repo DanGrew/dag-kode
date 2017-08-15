@@ -12,9 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.GridPane;
-import uk.dangrew.kode.javafx.registrations.ChangeListenerMismatchBindingImpl;
+import javafx.scene.layout.Region;
 import uk.dangrew.kode.javafx.registrations.RegistrationManager;
-import uk.dangrew.kode.javafx.style.Conversions;
 import uk.dangrew.kode.javafx.style.JavaFxStyle;
 import uk.dangrew.kode.javafx.style.PropertyRowBuilder;
 
@@ -36,19 +35,17 @@ public class PropertiesPane extends TitledPane {
             String paneName, 
             PropertyRowBuilder... properties 
    ){
-      this( new JavaFxStyle(), new Conversions(), paneName, properties );
+      this( new JavaFxStyle(), paneName, properties );
    }//End Constructor
    
    /**
     * Constructs a new {@link PropertiesPane}.
     * @param styling the {@link JavaFxStyle}.
-    * @param conversions the {@link Conversions}.
     * @param paneName the name of the {@link TitledPane}.
     * @param properties the {@link PropertyRowBuilder}s for the rows.
     */
    PropertiesPane(
             JavaFxStyle styling,
-            Conversions conversions,
             String paneName, 
             PropertyRowBuilder... properties
    ) {
@@ -60,15 +57,11 @@ public class PropertiesPane extends TitledPane {
       
       for ( int i = 0; i < properties.length; i++ ) {
          content.add( new Label( properties[ i ].labelName() ), 0, i );
-         
-         TextField field = new TextField();
-         field.setEditable( properties[ i ].isEditable() );
-         content.add( field, 1, i );
-         
-         registrations.apply( new ChangeListenerMismatchBindingImpl<>( 
-                  properties[ i ].property(), field.textProperty(), 
-                  conversions.stringToDoubleFunction(), conversions.doubleToStringFunction()
-         ) );
+
+         Region region = properties[ i ].binding().region();
+         region.setMaxWidth( Double.MAX_VALUE );
+         content.add( region, 1, i );
+         registrations.apply( properties[ i ].binding().registration() );
       }
       
       setText( paneName );
