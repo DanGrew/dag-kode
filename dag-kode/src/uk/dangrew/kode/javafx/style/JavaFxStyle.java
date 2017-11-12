@@ -25,6 +25,10 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -80,6 +84,19 @@ public class JavaFxStyle {
       Label label = new Label( title );
       Font existingFont = label.getFont();
       label.setFont( Font.font( existingFont.getFamily(), FontWeight.BOLD, FontPosture.REGULAR, fontSize ) );
+      return label;
+   }//End Method
+   
+   /**
+    * Method to create a bold {@link Label}.
+    * @param title the text in the {@link Label}.
+    * @param size the size of the {@link Font}.
+    * @param textColour the {@link Color} of the text. 
+    * @return the constructed {@link Label}.
+    */
+   public Label createBoldLabel( String title, double size, Color textColour ) {
+      Label label = createBoldLabel( title, size );
+      label.setTextFill( textColour );
       return label;
    }//End Method
    
@@ -320,6 +337,29 @@ public class JavaFxStyle {
       button.widthProperty().addListener( glyphSizeUpdater );
       button.heightProperty().addListener( glyphSizeUpdater );
       return button;
+   }//End Method
+   
+   /**
+    * Shortcut for constructing a {@link Background}.
+    * @param colour the {@link Color} {@link Background}.
+    * @return the {@link Background}.
+    */
+   public Background backgroundFor( Color colour ) {
+      if ( colour == null ) {
+         return null;
+      }
+      return new Background( 
+               new BackgroundFill( colour, null, null )
+      );
+   }//End Method
+   
+   /**
+    * Shortcut for constructing a {@link Border}.
+    * @param colour the {@link Color} {@link Border}.
+    * @return the {@link Border}.
+    */
+   public Border borderFor( Color colour ) {
+      return new Border( new BorderStroke( colour, BorderStrokeStyle.SOLID, null, new BorderWidths( 5 ) ) );
    }//End Method
    
 }//End Class

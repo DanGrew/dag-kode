@@ -44,6 +44,7 @@ public class TestApplication extends Application {
       primaryStage.setOnCloseRequest( e -> System.exit( 0 ) );
       primaryStage.setScene( scene );
       primaryStage.show();
+      primaryStage.setMaximized( true );
    }//End Method
    
    /**

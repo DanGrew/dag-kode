@@ -38,7 +38,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -75,6 +78,15 @@ public class JavaFxStyleTest {
       
       assertThat( label.getText(), is( text ) );
       assertThat( FontWeight.findByName( label.getFont().getStyle() ), is( FontWeight.BOLD ) );
+   }//End Method
+   
+   @Test public void shouldProvideLabel() {
+      final String text = "anything";
+      Label label = systemUnderTest.createBoldLabel( text, 34, Color.ANTIQUEWHITE );
+      
+      assertThat( label.getText(), is( text ) );
+      assertThat( FontWeight.findByName( label.getFont().getStyle() ), is( FontWeight.BOLD ) );
+      assertThat( label.getTextFill(), is( Color.ANTIQUEWHITE ) );
    }//End Method
    
    @Test public void shouldProvideLabelWithBoldFontAndSize() {
@@ -329,6 +341,32 @@ public class JavaFxStyleTest {
       
       button.resize( 80, 55 );
       assertThat( glyph.getGlyphSize(), is( 35.0 ) );
+   }//End Method
+   
+   @Test public void shouldProvideBackgroundFor() {
+      Background background = systemUnderTest.backgroundFor( Color.RED );
+      assertThat( background.getFills().get( 0 ).getFill(), is( Color.RED ) );
+   }//End Method
+   
+   @Test public void shouldNotProvideBackgroundForNullColour() {
+      assertThat( systemUnderTest.backgroundFor( null ), is( nullValue() ) );
+   }//End Method
+   
+   @Test public void shouldProvideBorderFor() {
+      Border border = systemUnderTest.borderFor( Color.RED );
+      assertBorderIs( Color.RED, border );
+   }//End Method
+   
+   private void assertBorderIs( Color colour, Border border ) {
+      assertThat( border.getStrokes().get( 0 ).getBottomStroke(), is( Color.RED ) );
+      assertThat( border.getStrokes().get( 0 ).getTopStroke(), is( Color.RED ) );
+      assertThat( border.getStrokes().get( 0 ).getRightStroke(), is( Color.RED ) );
+      assertThat( border.getStrokes().get( 0 ).getLeftStroke(), is( Color.RED ) );
+      
+      assertThat( border.getStrokes().get( 0 ).getBottomStyle(), is( BorderStrokeStyle.SOLID ) );
+      assertThat( border.getStrokes().get( 0 ).getTopStyle(), is( BorderStrokeStyle.SOLID ) );
+      assertThat( border.getStrokes().get( 0 ).getRightStyle(), is( BorderStrokeStyle.SOLID ) );
+      assertThat( border.getStrokes().get( 0 ).getLeftStyle(), is( BorderStrokeStyle.SOLID ) );
    }//End Method
    
 }//End Class
