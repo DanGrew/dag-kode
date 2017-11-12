@@ -330,7 +330,7 @@ public class JavaFxStyleTest {
       GlyphIcon< ? > glyph = new FontAwesomeIconView( FontAwesomeIcon.ADJUST );
       Button button = systemUnderTest.createGlyphButton( glyph );
       button.setMaxSize( Double.MAX_VALUE, Double.MAX_VALUE );
-      TestApplication.launch( () -> new BorderPane( button ) );
+      TestApplication.launch( () -> new BorderPane( button ), false );
       
       assertThat( glyph.getGlyphSize(), is( 80.0 ) );
       button.resize( 50, 50 );

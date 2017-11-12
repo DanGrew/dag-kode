@@ -44,7 +44,6 @@ public class TestApplication extends Application {
       primaryStage.setOnCloseRequest( e -> System.exit( 0 ) );
       primaryStage.setScene( scene );
       primaryStage.show();
-      primaryStage.setMaximized( true );
    }//End Method
    
    /**
@@ -53,11 +52,25 @@ public class TestApplication extends Application {
     * @param supplier the {@link Supplier} of the {@link Parent}.
     */
    public static void launch( Supplier< Parent > supplier ) throws InterruptedException {
+      launch( supplier, true );
+   }//End Method
+   
+   /**
+    * Method to launch a {@link TestApplication} in a simple way, using a {@link Supplier} so that
+    * the graphical {@link Parent} is constructed on the JavaFx {@link Thread}.
+    * @param supplier the {@link Supplier} of the {@link Parent}.
+    * @param max whether to launch maximized.
+    */
+   public static void launch( Supplier< Parent > supplier, boolean max ) throws InterruptedException {
       CountDownLatch latch = new CountDownLatch( 1 );
       PlatformImpl.startup( () -> {
          try {
             TestApplication application = new TestApplication( supplier.get() );
-            application.start( new Stage() );
+            Stage primaryStage = new Stage();
+            application.start( primaryStage );
+            if ( max ) {
+               primaryStage.setMaximized( true );
+            }
             latch.countDown();
          } catch ( Exception e ) {
             fail();
