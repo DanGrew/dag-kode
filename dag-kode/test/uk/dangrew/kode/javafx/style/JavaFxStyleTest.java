@@ -46,6 +46,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import uk.dangrew.kode.TestCommon;
 import uk.dangrew.kode.friendly.controlsfx.FriendlyFileChooser;
 import uk.dangrew.kode.javafx.spinner.DefensiveDoubleSpinnerValueFactory;
@@ -53,7 +54,6 @@ import uk.dangrew.kode.javafx.spinner.DefensiveIntegerSpinnerValueFactory;
 import uk.dangrew.kode.javafx.spinner.DoublePropertySpinner;
 import uk.dangrew.kode.javafx.spinner.IntegerPropertySpinner;
 import uk.dangrew.kode.javafx.spinner.PropertySpinner;
-import uk.dangrew.kode.javafx.style.JavaFxStyle;
 import uk.dangrew.kode.launch.TestApplication;
 
 /**
@@ -367,6 +367,12 @@ public class JavaFxStyleTest {
       assertThat( border.getStrokes().get( 0 ).getTopStyle(), is( BorderStrokeStyle.SOLID ) );
       assertThat( border.getStrokes().get( 0 ).getRightStyle(), is( BorderStrokeStyle.SOLID ) );
       assertThat( border.getStrokes().get( 0 ).getLeftStyle(), is( BorderStrokeStyle.SOLID ) );
+   }//End Method
+   
+   @Test public void shouldCreateWrappedTextLabel(){
+      Text text = systemUnderTest.createWrappedTextLabel( "anything", 50 );
+      assertThat( text.getText(), is( "anything" ) );
+      assertThat( text.getWrappingWidth(), is( 50.0 ) );
    }//End Method
    
 }//End Class

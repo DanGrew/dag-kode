@@ -37,6 +37,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import uk.dangrew.kode.friendly.controlsfx.FriendlyFileChooser;
 import uk.dangrew.kode.javafx.spinner.DefensiveDoubleSpinnerValueFactory;
 import uk.dangrew.kode.javafx.spinner.DefensiveIntegerSpinnerValueFactory;
@@ -118,6 +119,18 @@ public class JavaFxStyle {
    public Label createWrappedTextLabel( String text ) {
       Label label = new Label( text );
       label.setWrapText( true );
+      return label;
+   }//End Method
+   
+   /**
+    * Method to create a new {@link Label} with the given text that is wrapped
+    * across lines.
+    * @param text the {@link String} text on the {@link Label}.
+    * @return the {@link Label}.
+    */
+   public Text createWrappedTextLabel( String text, double wrapWidth ) {
+      Text label = new Text( text );
+      label.setWrappingWidth( wrapWidth );
       return label;
    }//End Method
    
