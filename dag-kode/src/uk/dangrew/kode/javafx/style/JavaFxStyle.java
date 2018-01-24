@@ -372,7 +372,17 @@ public class JavaFxStyle {
     * @return the {@link Border}.
     */
    public Border borderFor( Color colour ) {
-      return new Border( new BorderStroke( colour, BorderStrokeStyle.SOLID, null, new BorderWidths( 5 ) ) );
+      return borderFor( colour, 5 );
+   }//End Method
+   
+   /**
+    * Shortcut for constructing a {@link Border}.
+    * @param colour the {@link Color} {@link Border}.
+    * @param thickness the thickness of the {@link Border}.
+    * @return the {@link Border}.
+    */
+   public Border borderFor( Color colour, double thickness ) {
+      return new Border( new BorderStroke( colour, BorderStrokeStyle.SOLID, null, new BorderWidths( thickness ) ) );
    }//End Method
    
 }//End Class

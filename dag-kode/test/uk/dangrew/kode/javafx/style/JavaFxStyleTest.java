@@ -357,6 +357,15 @@ public class JavaFxStyleTest {
       assertBorderIs( Color.RED, border );
    }//End Method
    
+   @Test public void shouldProvideBorderForWithThickness() {
+      Border border = systemUnderTest.borderFor( Color.RED, 10 );
+      assertBorderIs( Color.RED, border );
+      assertThat( border.getStrokes().get( 0 ).getWidths().getTop(), is( 10.0 ) );
+      assertThat( border.getStrokes().get( 0 ).getWidths().getBottom(), is( 10.0 ) );
+      assertThat( border.getStrokes().get( 0 ).getWidths().getRight(), is( 10.0 ) );
+      assertThat( border.getStrokes().get( 0 ).getWidths().getLeft(), is( 10.0 ) );
+   }//End Method
+   
    private void assertBorderIs( Color colour, Border border ) {
       assertThat( border.getStrokes().get( 0 ).getBottomStroke(), is( Color.RED ) );
       assertThat( border.getStrokes().get( 0 ).getTopStroke(), is( Color.RED ) );
