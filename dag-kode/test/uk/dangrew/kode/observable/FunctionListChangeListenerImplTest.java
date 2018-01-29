@@ -8,12 +8,16 @@
  */
 package uk.dangrew.kode.observable;
 
+import static org.mockito.Mockito.verify;
+
 import java.util.function.Consumer;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import com.sun.javafx.collections.NonIterableChange.SimpleAddChange;
 import com.sun.javafx.collections.NonIterableChange.SimpleRemovedChange;
@@ -21,8 +25,8 @@ import com.sun.javafx.collections.NonIterableChange.SimpleRemovedChange;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ListChangeListener.Change;
+import uk.dangrew.kode.comparator.Comparators;
 import javafx.collections.ObservableList;
-import uk.dangrew.kode.observable.FunctionListChangeListenerImpl;
 
 /**
  * {@link FunctionListChangeListenerImpl} test.
@@ -30,18 +34,17 @@ import uk.dangrew.kode.observable.FunctionListChangeListenerImpl;
 public class FunctionListChangeListenerImplTest {
 
    private ObservableList< String > testList;
-   private Consumer< String > addFunction;
-   private Consumer< String > removeFunction;
+   @Mock private Consumer< String > addFunction;
+   @Mock private Consumer< String > removeFunction;
+   @Mock private Runnable permutationFunction;
    private ListChangeListener< String > systemUnderTest;
    
-   @SuppressWarnings("unchecked") //Mocking, safe. 
    @Before public void initialiseSystemUnderTest(){
+      MockitoAnnotations.initMocks( this );
       testList = FXCollections.observableArrayList( 
                "something", "in", "this", "list", "for", "testing", "purposes" 
       );
-      addFunction = Mockito.mock( Consumer.class );
-      removeFunction = Mockito.mock( Consumer.class );
-      systemUnderTest = new FunctionListChangeListenerImpl<>( addFunction, removeFunction );
+      systemUnderTest = new FunctionListChangeListenerImpl<>( addFunction, removeFunction, permutationFunction );
    }//End Method
    
    @Test public void shouldCallFunctionWhenAdded() {
@@ -94,5 +97,11 @@ public class FunctionListChangeListenerImplTest {
       Change< String > change = new SimpleRemovedChange<>( 0, 0, testList.get( 3 ), testList );
       systemUnderTest.onChanged( change );
       Assert.assertEquals( 6, testList.size() );
-   }
+   }//End Method
+   
+   @Test public void shouldCallPermutationFunction(){
+      testList.addListener( systemUnderTest );
+      testList.sort( Comparators.STRING_ALPHABETICAL );
+      verify( permutationFunction ).run();
+   }//End Method
 }//End Class

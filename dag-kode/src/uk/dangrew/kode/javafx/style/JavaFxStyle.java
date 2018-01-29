@@ -19,10 +19,12 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBase;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
@@ -383,6 +385,13 @@ public class JavaFxStyle {
     */
    public Border borderFor( Color colour, double thickness ) {
       return new Border( new BorderStroke( colour, BorderStrokeStyle.SOLID, null, new BorderWidths( thickness ) ) );
+   }//End Method
+   
+   public ScrollPane scrollPaneToFitFor( Node content ) {
+      ScrollPane scrollPane = new ScrollPane( content );
+      scrollPane.setFitToWidth( true );
+      scrollPane.setFitToHeight( true );
+      return scrollPane;
    }//End Method
    
 }//End Class

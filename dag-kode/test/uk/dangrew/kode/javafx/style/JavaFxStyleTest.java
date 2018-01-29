@@ -34,9 +34,11 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
@@ -382,6 +384,14 @@ public class JavaFxStyleTest {
       Text text = systemUnderTest.createWrappedTextLabel( "anything", 50 );
       assertThat( text.getText(), is( "anything" ) );
       assertThat( text.getWrappingWidth(), is( 50.0 ) );
+   }//End Method
+   
+   @Test public void shouldProvideScrollPaneFitting(){
+      Node node = new GridPane();
+      ScrollPane scroller = systemUnderTest.scrollPaneToFitFor( node );
+      assertThat( scroller.isFitToWidth(), is( true ) );
+      assertThat( scroller.isFitToHeight(), is( true ) );
+      assertThat( scroller.getContent(), is( node ) );
    }//End Method
    
 }//End Class

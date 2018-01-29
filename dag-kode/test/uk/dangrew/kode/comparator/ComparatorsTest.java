@@ -70,6 +70,19 @@ public class ComparatorsTest {
       assertThat( comparator.compare( second, second ), is( 0 ) );
    }//End Method
    
+   @Test public void shouldConstructComparatorForDoubleExtraction(){
+      Comparator< Pair< Double, Double > > comparator = Comparators.doubleExtractionComparater( Pair::getKey );
+      
+      Pair< Double, Double > first = new Pair< Double, Double >( 10.0, 100.0 );
+      Pair< Double, Double > second = new Pair< Double, Double >( 25.0, 10.0 );
+      Pair< Double, Double > last = new Pair< Double, Double >( 100.0, 25.0 );
+      
+      assertThat( comparator.compare( first, second ), lessThan( 0 ) );
+      assertThat( comparator.compare( second, last ), lessThan( 0 ) );
+      assertThat( comparator.compare( last, second ), greaterThan( 0 ) );
+      assertThat( comparator.compare( second, second ), is( 0 ) );
+   }//End Method
+   
    @Test public void shouldCompareNullValues(){
       assertThat( Comparators.compareForNullValues( null, null, true ), is( 0 ) );
       assertThat( Comparators.compareForNullValues( null, null, false ), is( 0 ) );

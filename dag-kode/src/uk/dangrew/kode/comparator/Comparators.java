@@ -106,6 +106,22 @@ public class Comparators {
    }//End Method
    
    /**
+    * Method to construct a {@link Comparator} for comparing {@link String}s extracted by the given {@link Function}.
+    * @param valueGetter the {@link Function} for getting the {@link String}.
+    * @param <TypeT> the type of the object being compared.
+    * @return the {@link Comparator} constructed.
+    */
+   public static < TypeT > Comparator< TypeT > doubleExtractionComparater( Function< TypeT, Double > valueGetter ) {
+      return new Comparator< TypeT >() {
+         @Override public int compare( TypeT o1, TypeT o2 ) {
+            Double o1s = valueGetter.apply( o1 );
+            Double o2s = valueGetter.apply( o2 );
+            return Comparators.compare( o1s, o2s );
+         }
+      };
+   }//End Method
+   
+   /**
     * Method to construct a reverse {@link Comparator} for the given. This will simply negate the given {@link Comparator}.
     * @param comparator the {@link Comparator} to reverse.
     * @param <TypeT> the type of the object being compared.
