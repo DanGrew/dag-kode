@@ -9,6 +9,7 @@
 package uk.dangrew.kode.javafx.style;
 
 import java.io.File;
+import java.util.function.Function;
 
 import de.jensd.fx.glyphs.GlyphIcon;
 import javafx.beans.property.DoubleProperty;
@@ -24,6 +25,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBase;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -392,6 +395,21 @@ public class JavaFxStyle {
       scrollPane.setFitToWidth( true );
       scrollPane.setFitToHeight( true );
       return scrollPane;
+   }//End Method
+   
+   //untested - hard to get to
+   public < ViewTypeT > void setStringConverter( ListView< ViewTypeT > listView, Function< ViewTypeT, String > converter ){
+      listView.setCellFactory( param -> new ListCell< ViewTypeT >() {
+         @Override protected void updateItem( ViewTypeT item, boolean empty ) {
+            super.updateItem( item, empty );
+
+            if ( empty || item == null ) {
+               setText( null );
+            } else {
+               setText( converter.apply( item ) );
+            }
+         }
+      } );
    }//End Method
    
 }//End Class

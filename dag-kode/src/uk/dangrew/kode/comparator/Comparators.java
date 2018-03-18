@@ -21,7 +21,7 @@ public class Comparators {
       @Override public int compare( String o1, String o2 ) {
          Integer nullResult = compareForNullValues( o1, o2, true );
          if ( nullResult == null ) {
-            return o1.compareTo( o2 );
+            return o1.compareToIgnoreCase( o2 );
          } else {
             return nullResult;
          }
