@@ -9,6 +9,7 @@ import javafx.scene.text.FontWeight;
 
 public class LabelBuilder {
 
+   private static final JavaFxStyle styling = new JavaFxStyle();
    private final Label label;
    
    public LabelBuilder() {
@@ -51,8 +52,23 @@ public class LabelBuilder {
       return this;
    }//End Method
    
+   public LabelBuilder withMaxWidth(){
+      label.setMaxWidth( Double.MAX_VALUE );
+      return this;
+   }//End Method
+   
+   public LabelBuilder withMaxHeight(){
+      label.setMaxHeight( Double.MAX_VALUE );
+      return this;
+   }//End Method
+   
    public LabelBuilder positioned( Pos position ) {
       label.setAlignment( position );
+      return this;
+   }//End Method
+   
+   public LabelBuilder withBackgroundColour( Color colour ) {
+      label.setBackground( styling.backgroundFor( colour ) );
       return this;
    }//End Method
 

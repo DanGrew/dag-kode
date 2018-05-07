@@ -22,9 +22,24 @@ public class LabelBuilderTest {
       systemUnderTest = new LabelBuilder();
    }//End Method
 
-   @Test public void shouldText() {
+   @Test public void shouldSetText() {
       Label label = systemUnderTest.withText( "anything" ).build();
       assertThat( label.getText(), is( "anything" ) );
+   }//End Method
+   
+   @Test public void shouldSetBackground() {
+      Label label = systemUnderTest.withBackgroundColour( Color.RED ).build();
+      assertThat( label.getBackground().getFills().get( 0 ).getFill(), is( Color.RED ) );
+   }//End Method
+   
+   @Test public void shouldSetMaxWidth() {
+      Label label = systemUnderTest.withMaxWidth().build();
+      assertThat( label.getMaxWidth(), is( Double.MAX_VALUE ) );
+   }//End Method
+   
+   @Test public void shouldSetMaxHeight() {
+      Label label = systemUnderTest.withMaxHeight().build();
+      assertThat( label.getMaxHeight(), is( Double.MAX_VALUE ) );
    }//End Method
    
    @Test public void shouldSetBold() {
