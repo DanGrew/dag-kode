@@ -74,4 +74,24 @@ public class LabelBuilderTest {
       assertThat( label.getAlignment(), is( Pos.CENTER ) );
    }//End Method
    
+   @Test public void shouldProvideBorder(){
+      Label label = systemUnderTest.withBorder( Color.ANTIQUEWHITE, 4 ).build();
+      assertThat( label.getBorder().getStrokes().get( 0 ).getBottomStroke(), is( Color.ANTIQUEWHITE ) );
+      assertThat( label.getBorder().getStrokes().get( 0 ).getWidths().getBottom(), is( 4.0 ) );
+      assertThat( label.getBorder().getStrokes().get( 0 ).getTopStroke(), is( Color.ANTIQUEWHITE ) );
+      assertThat( label.getBorder().getStrokes().get( 0 ).getWidths().getTop(), is( 4.0 ) );
+      assertThat( label.getBorder().getStrokes().get( 0 ).getRightStroke(), is( Color.ANTIQUEWHITE ) );
+      assertThat( label.getBorder().getStrokes().get( 0 ).getWidths().getRight(), is( 4.0 ) );
+      assertThat( label.getBorder().getStrokes().get( 0 ).getLeftStroke(), is( Color.ANTIQUEWHITE ) );
+      assertThat( label.getBorder().getStrokes().get( 0 ).getWidths().getLeft(), is( 4.0 ) );
+   }//End Method
+   
+   @Test public void shouldProvidePadding(){
+      Label label = systemUnderTest.withPadding( 4 ).build();
+      assertThat( label.getPadding().getBottom(), is( 4.0 ) );
+      assertThat( label.getPadding().getTop(), is( 4.0 ) );
+      assertThat( label.getPadding().getRight(), is( 4.0 ) );
+      assertThat( label.getPadding().getLeft(), is( 4.0 ) );
+   }//End Method
+   
 }//End Class

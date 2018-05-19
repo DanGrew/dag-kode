@@ -1,5 +1,6 @@
 package uk.dangrew.kode.javafx.style;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
@@ -69,6 +70,16 @@ public class LabelBuilder {
    
    public LabelBuilder withBackgroundColour( Color colour ) {
       label.setBackground( styling.backgroundFor( colour ) );
+      return this;
+   }//End Method
+   
+   public LabelBuilder withBorder( Color colour, double thickness ) {
+      label.setBorder( styling.borderFor( colour, thickness ) );
+      return this;
+   }//End Method
+   
+   public LabelBuilder withPadding( int padding ) {
+      label.setPadding( new Insets( padding ) );
       return this;
    }//End Method
 

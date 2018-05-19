@@ -13,6 +13,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 import java.io.InputStream;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -136,6 +137,10 @@ public final class TestCommon {
       
       Scanner scanner = new Scanner( stream );
       return readScannerContentAndClose( scanner );
+   }//End Method
+   
+   public static void assertThatInputIsInRangeOf( LocalDateTime subject, LocalDateTime expected, boolean insideRange ) {
+      assertThat( subject.isAfter( expected.minusMinutes( 5 ) ) && subject.isBefore( expected.plusMinutes( 5 ) ), is( insideRange ) );
    }//End Method
    
 }//End Class

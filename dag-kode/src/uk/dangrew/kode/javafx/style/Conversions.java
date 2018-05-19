@@ -33,6 +33,14 @@ public class Conversions {
          return 0.0;
       }
    };
+   
+   private static final Function< String, Double > NULLABLE_STRING_TO_DOUBLE = s -> {
+      try {
+         return Double.valueOf( s );
+      } catch ( NumberFormatException e ) {
+         return null;
+      }
+   };
 
    /**
     * Format the given as a {@link String} to 2dp.
@@ -57,6 +65,10 @@ public class Conversions {
     */
    public Function< String, Double > stringToDoubleFunction() {
       return STRING_TO_DOUBLE;
+   }//End Method
+   
+   public Function< String, Double > nullableStringToDoubleFunction() {
+      return NULLABLE_STRING_TO_DOUBLE;
    }//End Method
    
 }//End Class

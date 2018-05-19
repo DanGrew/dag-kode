@@ -29,8 +29,11 @@ public class ResponsiveComboProperty< TypeT > implements ResponsiveRegionPropert
     * @param listener the {@link ChangeListener} to notify when changed.
     */
    public ResponsiveComboProperty( ObservableList< TypeT > items, TypeT selected, ChangeListener< TypeT > listener ) {
-      this.field = new ComboBox<>();
-      this.field.setItems( items );
+      this( new ComboBox<>( items ), selected, listener );
+   }//End Constructor
+   
+   public ResponsiveComboProperty( ComboBox< TypeT > box, TypeT selected, ChangeListener< TypeT > listener ) {
+      this.field = box;
       this.field.getSelectionModel().select( selected );
       
       this.registration = new ReadOnlyChangeListenerRegistrationImpl< TypeT >(  

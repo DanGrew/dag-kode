@@ -1,5 +1,6 @@
 package uk.dangrew.kode.javafx.style;
 
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -27,6 +28,11 @@ public class ConversionsTest {
    @Test public void shouldConvertStringsToDoubles() {
       assertThat( systemUnderTest.stringToDoubleFunction().apply( "25" ), is( 25.0 ) );
       assertThat( systemUnderTest.stringToDoubleFunction().apply( "anything" ), is( 0.0 ) );
+   }//End Method
+   
+   @Test public void shouldConvertNullableStringsToDoubles() {
+      assertThat( systemUnderTest.nullableStringToDoubleFunction().apply( "25" ), is( 25.0 ) );
+      assertThat( systemUnderTest.nullableStringToDoubleFunction().apply( "anything" ), is( nullValue() ) );
    }//End Method
 
 }//End Class
