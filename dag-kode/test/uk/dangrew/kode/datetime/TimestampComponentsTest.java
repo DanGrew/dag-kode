@@ -34,8 +34,8 @@ public class TimestampComponentsTest {
    }//End Method
    
    @Test public void shouldProvideStartingCaretPosition(){
-      assertThat( TimestampComponents.Hour.startingCaretPosition().getAsInt(), is( 9 ) );
-      assertThat( TimestampComponents.Second.startingCaretPosition().getAsInt(), is( 15 ) );
+      assertThat( TimestampComponents.Hour.startingCaretPosition().getAsInt(), is( 11 ) );
+      assertThat( TimestampComponents.Second.startingCaretPosition().getAsInt(), is( 17 ) );
       assertThat( TimestampComponents.Separator.startingCaretPosition(), is( OptionalInt.empty() ) );
    }//End Method
 
