@@ -73,7 +73,8 @@ public class TestApplication extends Application {
             }
             latch.countDown();
          } catch ( Exception e ) {
-            fail();
+            e.printStackTrace();
+            fail( e.getMessage() );
          }
       } );
       latch.await();
