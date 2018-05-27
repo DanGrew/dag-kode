@@ -9,7 +9,7 @@ import java.util.function.Supplier;
 
 public class BuilderVerifier< SutT > {
 
-   public < VariableT > BuilderVerifier< SutT > build( 
+   public < VariableT > BuilderVerifier< SutT > buildObject( 
             Consumer< VariableT > setter, 
             Supplier< VariableT > getter, 
             VariableT sample 
@@ -19,7 +19,7 @@ public class BuilderVerifier< SutT > {
       return this;
    }//End Method
    
-   public BuilderVerifier< SutT > build( 
+   public BuilderVerifier< SutT > buildBoolean( 
             Runnable setter, 
             Supplier< Boolean > getter, 
             boolean expected
