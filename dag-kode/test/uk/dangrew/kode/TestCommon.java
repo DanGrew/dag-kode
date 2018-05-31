@@ -24,6 +24,7 @@ import org.junit.Assert;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
 /**
@@ -71,6 +72,14 @@ public final class TestCommon {
     */
    public static void assertThatFontIsBold( Font font ) {
       assertThat( FontWeight.findByName( font.getStyle() ), is( FontWeight.BOLD ) );
+   }//End Method
+   
+   public static void assertThatFontHasWeight( Font font, FontWeight weight ) {
+      assertThat( FontWeight.findByName( font.getStyle() ), is( weight ) );
+   }//End Method
+   
+   public static void assertThatFontHasPosture( Font font, FontPosture posture ) {
+      assertThat( FontPosture.findByName( font.getStyle() ), is( posture ) );
    }//End Method
    
    /**

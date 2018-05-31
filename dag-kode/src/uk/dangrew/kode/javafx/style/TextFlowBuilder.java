@@ -1,11 +1,14 @@
 package uk.dangrew.kode.javafx.style;
 
 import javafx.geometry.Insets;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import uk.dangrew.kode.friendly.javafx.FriendlyDesktop;
 import uk.dangrew.kode.styling.FontFamilies;
 
 public class TextFlowBuilder {
@@ -18,8 +21,12 @@ public class TextFlowBuilder {
    private final TextFlow flow;
    
    public TextFlowBuilder() {
+      this( Font.getDefault().getSize() );
+   }//End Constructor
+   
+   public TextFlowBuilder( double size ) {
       this.flow = new TextFlow();
-      this.defaultFontSize = Font.getDefault().getSize();
+      this.defaultFontSize = size;
       if ( FontFamilies.getUsableFontFamilies().contains( CALIBRI ) ) {
          this.prefferedFontFamily = CALIBRI;
       } else {
@@ -34,13 +41,20 @@ public class TextFlowBuilder {
    }//End Method
    
    public TextFlowBuilder normal( String string ) {
-      createText( string );
+      Text text = createText( string );
+      text.setFont( Font.font( prefferedFontFamily, FontWeight.NORMAL, defaultFontSize ) );
       return this;
    }//End Method
    
    public TextFlowBuilder bold( String string ) {
       Text text = createText( string );
       text.setFont( Font.font( prefferedFontFamily, FontWeight.BOLD, defaultFontSize ) );
+      return this;
+   }//End Method
+   
+   public TextFlowBuilder italic( String string ) {
+      Text text = createText( string );
+      text.setFont( Font.font( prefferedFontFamily, FontPosture.ITALIC, defaultFontSize ) );
       return this;
    }//End Method
    
@@ -60,6 +74,13 @@ public class TextFlowBuilder {
    
    public TextFlowBuilder withPadding( int padding ) {
       flow.setPadding( new Insets( padding ) );
+      return this;
+   }//End Method
+   
+   public TextFlowBuilder withHyperlink( String address, FriendlyDesktop desktop ) {
+      Hyperlink hyperlink = new Hyperlink( address );
+      hyperlink.setOnAction( e -> desktop.browseToIconWebsite( address ) );
+      flow.getChildren().add( hyperlink );
       return this;
    }//End Method
    
