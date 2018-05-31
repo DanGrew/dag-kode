@@ -1,5 +1,7 @@
 package uk.dangrew.kode.javafx.style;
 
+import org.dom4j.tree.BackedList;
+
 import javafx.geometry.Insets;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.paint.Color;
@@ -20,6 +22,9 @@ public class TextFlowBuilder {
    private final double defaultFontSize;
    private final TextFlow flow;
    
+   private Color colour;
+   private double currentFontSize;
+   
    public TextFlowBuilder() {
       this( Font.getDefault().getSize() );
    }//End Constructor
@@ -27,34 +32,37 @@ public class TextFlowBuilder {
    public TextFlowBuilder( double size ) {
       this.flow = new TextFlow();
       this.defaultFontSize = size;
+      this.currentFontSize = defaultFontSize;
       if ( FontFamilies.getUsableFontFamilies().contains( CALIBRI ) ) {
          this.prefferedFontFamily = CALIBRI;
       } else {
          this.prefferedFontFamily = Font.getDefault().getFamily();
       }
+      this.resetColour();
    }//End Constructor
    
    private Text createText( String string ) {
       Text text = new Text( string );
+      text.setFill( colour );
       flow.getChildren().add( text );
       return text;
    }//End Method
    
    public TextFlowBuilder normal( String string ) {
       Text text = createText( string );
-      text.setFont( Font.font( prefferedFontFamily, FontWeight.NORMAL, defaultFontSize ) );
+      text.setFont( Font.font( prefferedFontFamily, FontWeight.NORMAL, currentFontSize ) );
       return this;
    }//End Method
    
    public TextFlowBuilder bold( String string ) {
       Text text = createText( string );
-      text.setFont( Font.font( prefferedFontFamily, FontWeight.BOLD, defaultFontSize ) );
+      text.setFont( Font.font( prefferedFontFamily, FontWeight.BOLD, currentFontSize ) );
       return this;
    }//End Method
    
    public TextFlowBuilder italic( String string ) {
       Text text = createText( string );
-      text.setFont( Font.font( prefferedFontFamily, FontPosture.ITALIC, defaultFontSize ) );
+      text.setFont( Font.font( prefferedFontFamily, FontPosture.ITALIC, currentFontSize ) );
       return this;
    }//End Method
    
@@ -81,6 +89,26 @@ public class TextFlowBuilder {
       Hyperlink hyperlink = new Hyperlink( address );
       hyperlink.setOnAction( e -> desktop.browseToIconWebsite( address ) );
       flow.getChildren().add( hyperlink );
+      return this;
+   }//End Method
+   
+   public TextFlowBuilder withColour( Color colour ) {
+      this.colour = colour;
+      return this;
+   }//End Method
+   
+   public TextFlowBuilder resetColour(){
+      this.colour = Color.BLACK;
+      return this;
+   }//End Method
+   
+   public TextFlowBuilder withSize( double size ) {
+      this.currentFontSize = size;
+      return this;
+   }//End Method
+   
+   public TextFlowBuilder resetFontSize(){
+      this.currentFontSize = defaultFontSize;
       return this;
    }//End Method
    

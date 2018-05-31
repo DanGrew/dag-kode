@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javafx.scene.control.Hyperlink;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -62,6 +63,25 @@ public class TextFlowBuilderTest {
                .build();
       Text text1 = ( Text ) flow.getChildren().get( 0 );
       assertThat( text1.getFont().getSize(), is( 34.0 ) );
+   }//End Method
+   
+   @Test public void shouldMaintainColourAndSize(){
+      TextFlow flow = systemUnderTest
+               .withColour( Color.RED )
+               .withSize( 40 )
+               .normal( "Starting a sentence " )
+               .resetColour()
+               .resetFontSize()
+               .normal( "ending a sentence." )
+               .build();
+      
+      Text text1 = ( Text ) flow.getChildren().get( 0 );
+      assertThat( text1.getFill(), is( Color.RED ) );
+      assertThat( text1.getFont().getSize(), is( 40.0 ) );
+      
+      Text text2 = ( Text ) flow.getChildren().get( 1 );
+      assertThat( text2.getFill(), is( Color.BLACK ) );
+      assertThat( text2.getFont().getSize(), is( Font.getDefault().getSize() ) );
    }//End Method
 
 }//End Class
