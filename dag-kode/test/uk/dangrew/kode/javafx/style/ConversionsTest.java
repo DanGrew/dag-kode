@@ -33,6 +33,7 @@ public class ConversionsTest {
    @Test public void shouldConvertNullableStringsToDoubles() {
       assertThat( systemUnderTest.nullableStringToDoubleFunction().apply( "25" ), is( 25.0 ) );
       assertThat( systemUnderTest.nullableStringToDoubleFunction().apply( "anything" ), is( nullValue() ) );
+      assertThat( systemUnderTest.nullableStringToDoubleFunction().apply( null ), is( nullValue() ) );
    }//End Method
 
 }//End Class

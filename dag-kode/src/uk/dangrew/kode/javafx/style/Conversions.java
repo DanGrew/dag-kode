@@ -35,6 +35,9 @@ public class Conversions {
    };
    
    private static final Function< String, Double > NULLABLE_STRING_TO_DOUBLE = s -> {
+      if ( s == null ) {
+         return null;
+      }
       try {
          return Double.valueOf( s );
       } catch ( NumberFormatException e ) {

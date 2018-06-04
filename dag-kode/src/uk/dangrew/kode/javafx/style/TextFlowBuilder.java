@@ -1,9 +1,9 @@
 package uk.dangrew.kode.javafx.style;
 
-import org.dom4j.tree.BackedList;
-
 import javafx.geometry.Insets;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.Border;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -20,6 +20,8 @@ public class TextFlowBuilder {
    
    private final String prefferedFontFamily;
    private final double defaultFontSize;
+   private final Background defaultBackground;
+   private final Border defaultBorder;
    private final TextFlow flow;
    
    private Color colour;
@@ -33,12 +35,14 @@ public class TextFlowBuilder {
       this.flow = new TextFlow();
       this.defaultFontSize = size;
       this.currentFontSize = defaultFontSize;
+      this.defaultBackground = flow.getBackground();
+      this.defaultBorder = flow.getBorder();
       if ( FontFamilies.getUsableFontFamilies().contains( CALIBRI ) ) {
          this.prefferedFontFamily = CALIBRI;
       } else {
          this.prefferedFontFamily = Font.getDefault().getFamily();
       }
-      this.resetColour();
+      this.resetTextColour();
    }//End Constructor
    
    private Text createText( String string ) {
@@ -70,44 +74,68 @@ public class TextFlowBuilder {
       return normal( "\n" );
    }//End Method
    
-   public TextFlowBuilder withBackground( Color colour ) {
+   public TextFlowBuilder withFlowBackground( Color colour ) {
       flow.setBackground( styling.backgroundFor( colour ) );
       return this;
    }//End Method
    
-   public TextFlowBuilder withBorder( Color colour, double thickness ) {
+   public TextFlowBuilder resetFlowBackground() {
+      flow.setBackground( defaultBackground );
+      return this;
+   }//End Method
+   
+   public TextFlowBuilder withFlowBorder( Color colour, double thickness ) {
       flow.setBorder( styling.borderFor( colour, thickness ) );
       return this;
    }//End Method
    
-   public TextFlowBuilder withPadding( int padding ) {
+   public TextFlowBuilder withFlowBorder( double thickness ) {
+      return withFlowBorder( Color.BLACK, thickness );
+   }//End Method
+   
+   public TextFlowBuilder withFlowBorder( Color colour ) {
+      flow.setBorder( styling.borderFor( colour, 2 ) );
+      return this;
+   }//End Method
+   
+   public TextFlowBuilder resetFlowBorder() {
+      flow.setBorder( defaultBorder );
+      return this;
+   }//End Method
+   
+   public TextFlowBuilder withFlowPadding( double padding ) {
       flow.setPadding( new Insets( padding ) );
       return this;
    }//End Method
    
+   public TextFlowBuilder resetFlowPadding(){
+      return withFlowPadding( 0 );
+   }//End Method
+   
    public TextFlowBuilder withHyperlink( String address, FriendlyDesktop desktop ) {
-      Hyperlink hyperlink = new Hyperlink( address );
+      Hyperlink hyperlink = new Hyperlink( address.trim() );
+      hyperlink.setFont( Font.font( prefferedFontFamily, FontWeight.NORMAL, currentFontSize ) );
       hyperlink.setOnAction( e -> desktop.browseToIconWebsite( address ) );
       flow.getChildren().add( hyperlink );
       return this;
    }//End Method
    
-   public TextFlowBuilder withColour( Color colour ) {
+   public TextFlowBuilder withTextColour( Color colour ) {
       this.colour = colour;
       return this;
    }//End Method
    
-   public TextFlowBuilder resetColour(){
+   public TextFlowBuilder resetTextColour(){
       this.colour = Color.BLACK;
       return this;
    }//End Method
    
-   public TextFlowBuilder withSize( double size ) {
+   public TextFlowBuilder withFontSize( double size ) {
       this.currentFontSize = size;
       return this;
    }//End Method
    
-   public TextFlowBuilder resetFontSize(){
+   public TextFlowBuilder resetTextSize(){
       this.currentFontSize = defaultFontSize;
       return this;
    }//End Method
