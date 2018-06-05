@@ -21,7 +21,7 @@ public class IoCommon {
     * @param scanner the {@link Scanner} to read.
     * @return the {@link String} containing all text from the {@link Scanner}.
     */
-   public final String readScannerContentAndClose( Scanner scanner ) {
+   public String readScannerContentAndClose( Scanner scanner ) {
       String content = scanner.useDelimiter( "//Z" ).next();
       scanner.close();
       return content;
@@ -33,7 +33,7 @@ public class IoCommon {
     * @param filename the name of the {@link File}.
     * @return the {@link String} containing all text from the {@link File}.
     */
-   public final String readFileIntoString( Class< ? > locationClass, String filename ) {
+   public String readFileIntoString( Class< ? > locationClass, String filename ) {
       InputStream stream = locationClass.getResourceAsStream( filename );
       Scanner scanner = new Scanner( stream );
       return readScannerContentAndClose( scanner );
