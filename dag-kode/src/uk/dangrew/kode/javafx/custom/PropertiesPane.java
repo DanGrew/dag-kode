@@ -8,6 +8,8 @@
  */
 package uk.dangrew.kode.javafx.custom;
 
+import java.util.Collection;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
@@ -25,6 +27,13 @@ public class PropertiesPane extends TitledPane {
    
    private final RegistrationManager registrations;
    private final GridPane content;
+   
+   public PropertiesPane( 
+            String paneName, 
+            Collection< PropertyRowBuilder > properties 
+   ){
+      this( paneName, properties.toArray( new PropertyRowBuilder[ properties.size() ] ) );
+   }//End Constructor
    
    /**
     * Constructs a new {@link PropertiesPane}.

@@ -14,7 +14,6 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
 import java.time.LocalDateTime;
-import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
@@ -173,25 +172,6 @@ public final class TestCommon {
       }
       assertThat( firstCount.get(), is( loopCounts ) );
       assertThat( secondCount.get(), is( loopCounts ) );
-   }//End Method
-   
-   /**
-    * Method to read the given {@link Scanner} and extract a {@link String}.
-    * @param scanner the {@link Scanner} to read.
-    * @return the {@link String} containing all text from the {@link Scanner}.
-    */
-   @Deprecated static final String readScannerContentAndClose( Scanner scanner ) {
-      return ioCommon.readScannerContentAndClose( scanner );
-   }//End Method
-   
-   /**
-    * Method to read a text file into a {@link String}.
-    * @param locationClass the {@link Class} in the package to load the {@link File} from.
-    * @param filename the name of the {@link File}.
-    * @return the {@link String} containing all text from the {@link File}.
-    */
-   @Deprecated public static final String readFileIntoString( Class< ? > locationClass, String filename ) {
-      return ioCommon.readFileIntoString( locationClass, filename );
    }//End Method
    
    public static void assertThatInputIsInRangeOf( LocalDateTime subject, LocalDateTime expected, boolean insideRange ) {
