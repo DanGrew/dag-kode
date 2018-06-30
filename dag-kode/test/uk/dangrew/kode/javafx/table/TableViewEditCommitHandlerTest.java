@@ -13,14 +13,14 @@ import org.mockito.MockitoAnnotations;
 
 import javafx.scene.control.TableColumn.CellEditEvent;
 
-public class EditCommitHandlerTest {
+public class TableViewEditCommitHandlerTest {
 
    @Mock private BiConsumer< String, Double > consumer;
-   private EditCommitHandler< String, Double > systemUnderTest;
+   private TableViewEditCommitHandler< String, Double > systemUnderTest;
 
    @Before public void initialiseSystemUnderTest() {
       MockitoAnnotations.initMocks( this );
-      systemUnderTest = new EditCommitHandler<>( consumer );
+      systemUnderTest = new TableViewEditCommitHandler<>( consumer );
    }//End Method
 
    @Test public void shouldForwardCall() {
