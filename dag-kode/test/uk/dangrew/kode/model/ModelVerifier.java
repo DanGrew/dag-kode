@@ -12,6 +12,7 @@ import java.util.UUID;
 import java.util.function.Function;
 
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.collections.ObservableMap;
 
 public class ModelVerifier< SutT > {
@@ -54,6 +55,10 @@ public class ModelVerifier< SutT > {
    public ModelVerifier< SutT > shouldProvideDoubleProperty( Function< SutT, ObjectProperty< Double > > supplier, Double initialValue ) {
       double value = random.nextDouble();
       return shouldProvideProperty( supplier, initialValue, value );
+   }//End Method
+   
+   public ModelVerifier< SutT > shouldProvideReadOnlyDoubleProperty( Function< SutT, ReadOnlyObjectProperty< Double > > supplier ) {
+      return shouldProvideObject( supplier );
    }//End Method
    
    public ModelVerifier< SutT > shouldProvideBooleanProperty( Function< SutT, ObjectProperty< Boolean > > supplier ) {

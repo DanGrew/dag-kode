@@ -1,6 +1,5 @@
 package uk.dangrew.kode.textflow.model.tags;
 
-import javafx.util.Pair;
 import uk.dangrew.kode.javafx.style.Conversions;
 import uk.dangrew.kode.javafx.style.TextFlowBuilder;
 import uk.dangrew.kode.textflow.model.TextFlowFormat;

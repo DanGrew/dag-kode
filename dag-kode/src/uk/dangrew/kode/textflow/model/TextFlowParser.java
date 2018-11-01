@@ -5,7 +5,6 @@ import java.util.Optional;
 import java.util.TreeMap;
 
 import javafx.scene.text.TextFlow;
-import javafx.util.Pair;
 import uk.dangrew.kode.javafx.style.TextFlowBuilder;
 import uk.dangrew.kode.utility.core.Strings;
 
