@@ -42,7 +42,7 @@ public interface ConceptStore< TypeT > extends ObjectStoreManager< String, TypeT
     * Method to store the {@link Concept} in the {@link ConceptStore}.
     * @param food the {@link Concept} to store.
     */
-   public void store( TypeT food );
+   public void store( TypeT concept );
    
    /**
     * Getter for the {@link Concept} with the given id.
@@ -55,6 +55,6 @@ public interface ConceptStore< TypeT > extends ObjectStoreManager< String, TypeT
     * Method to remove the given {@link Concept} from the store.
     * @param food the {@link Concept} to remove.
     */
-   public void removeConcept( TypeT food );
+   public void removeConcept( TypeT concept );
    
 }//End Interface

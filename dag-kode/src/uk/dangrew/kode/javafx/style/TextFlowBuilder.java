@@ -70,6 +70,26 @@ public class TextFlowBuilder {
       return this;
    }//End Method
    
+   public TextFlowBuilder boxNext( Color colour ){
+//      final Rectangle redBorder = new Rectangle(0, 0, Color.TRANSPARENT);
+//      redBorder.setStroke(Color.RED);
+//      redBorder.setManaged(false);
+//      text.boundsInParentProperty().addListener(new ChangeListener<Bounds>() {
+//
+//          @Override
+//          public void changed(ObservableValue<? extends Bounds> observable,
+//                  Bounds oldValue, Bounds newValue) {
+//              redBorder.setLayoutX(text.getBoundsInParent().getMinX());
+//              redBorder.setLayoutY(text.getBoundsInParent().getMinY());
+//              redBorder.setWidth(text.getBoundsInParent().getWidth());
+//              redBorder.setHeight(text.getBoundsInParent().getHeight());
+//          }
+//
+//      });
+//      flow.getChildren().add( redBorder );
+      return this;
+   }//End Method
+   
    public TextFlowBuilder newLine() {
       return normal( "\n" );
    }//End Method

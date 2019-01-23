@@ -12,7 +12,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import uk.dangrew.kode.javafx.registrations.RegistrationManager;
 import uk.dangrew.kode.launch.TestApplication;
 
-public class BoundTextPropertyTest {
+public class BoundDoubleAsTextPropertyTest {
 
    private ObjectProperty< Double > property;
    private BoundDoubleAsTextProperty systemUnderTest;

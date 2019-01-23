@@ -10,10 +10,9 @@ public interface Concept {
    
    /**
     * Method to duplicate the {@link Concept}.
-    * @param referenceId the reference to append to the name.
     * @return the duplicated {@link Concept}.
     */
-   public Concept duplicate( String referenceId );
+   public Concept duplicate();
    
 }//End Interface
 

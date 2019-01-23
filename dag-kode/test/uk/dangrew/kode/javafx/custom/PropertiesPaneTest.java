@@ -44,13 +44,13 @@ public class PropertiesPaneTest {
       
       row1 = new PropertyRowBuilder()
                .withLabelName( "First" )
-               .withBinding( new BoundTextProperty( new SimpleObjectProperty< Double >( 25.0 ), true ) );
+               .withBinding( new BoundDoubleAsTextProperty( new SimpleObjectProperty< Double >( 25.0 ), true ) );
       row2 = new PropertyRowBuilder()
                .withLabelName( "Second" )
-               .withBinding( new BoundTextProperty( new SimpleObjectProperty< Double >( 3.0 ), false ) );
+               .withBinding( new BoundDoubleAsTextProperty( new SimpleObjectProperty< Double >( 3.0 ), false ) );
       row3 = new PropertyRowBuilder()
                .withLabelName( "Third" )
-               .withBinding( new BoundTextProperty( new SimpleObjectProperty< Double >( 0.34857 ), true ) );
+               .withBinding( new BoundDoubleAsTextProperty( new SimpleObjectProperty< Double >( 0.34857 ), true ) );
       rows = Arrays.asList( row1, row2, row3 );
       
       systemUnderTest = new PropertiesPane( 
@@ -85,7 +85,7 @@ public class PropertiesPaneTest {
    @Test public void shouldHoldTextFieldsForEachProperty() {
       for ( int i = 0; i < rows.size(); i++ ) {
          TextField field = systemUnderTest.textFieldForRow( i );
-         BoundTextProperty binding = ( BoundTextProperty ) rows.get( i ).binding();
+         BoundDoubleAsTextProperty binding = ( BoundDoubleAsTextProperty ) rows.get( i ).binding();
          assertThat( field.getText(), is( conversions.format( binding.property().get() ) ) );
          assertThat( GridPane.getRowIndex( field ), is( i ) );
          assertThat( GridPane.getColumnIndex( field ), is( 1 ) );
@@ -96,7 +96,7 @@ public class PropertiesPaneTest {
    @Test public void shouldBindPropertiesForTextFields() {
       for ( int i = 0; i < rows.size(); i++ ) {
          TextField field = systemUnderTest.textFieldForRow( i );
-         ObjectProperty< Double > property = ( ( BoundTextProperty ) rows.get( i ).binding() ).property();
+         ObjectProperty< Double > property = ( ( BoundDoubleAsTextProperty ) rows.get( i ).binding() ).property();
          
          assertThat( field.getText(), is( conversions.format( property.get() ) ) );
          field.setText( "35.0" );

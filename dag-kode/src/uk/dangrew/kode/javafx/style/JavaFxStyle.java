@@ -28,6 +28,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
@@ -410,6 +411,18 @@ public class JavaFxStyle {
             }
          }
       } );
+   }//End Method
+   
+   public TitledPane simpleHeaderDescription( String title, String headerText ){
+      Label summary = createBoldLabel( headerText );
+      summary.setPadding( new Insets( 10 ) );
+      summary.setWrapText( true );
+      
+      TitledPane header = new TitledPane( 
+               title, summary
+      );
+      header.setCollapsible( false );
+      return header;
    }//End Method
    
 }//End Class

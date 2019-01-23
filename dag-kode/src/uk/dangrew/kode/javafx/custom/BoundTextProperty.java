@@ -10,18 +10,15 @@ package uk.dangrew.kode.javafx.custom;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.scene.control.TextField;
-import uk.dangrew.kode.javafx.registrations.ChangeListenerMismatchBindingImpl;
+import uk.dangrew.kode.javafx.registrations.ChangeListenerBindingImpl;
 import uk.dangrew.kode.javafx.registrations.RegistrationImpl;
-import uk.dangrew.kode.javafx.style.Conversions;
 
 /**
- * Provides a {@link TextField} bound to a {@link ObjectProperty} of {@link Double}.
+ * Provides a {@link TextField} bound to a {@link ObjectProperty} of {@link String}.
  */
 public class BoundTextProperty implements ResponsiveRegionProperty {
    
-   private final Conversions conversions;
-   
-   private final ObjectProperty< Double > property;
+   private final ObjectProperty< String > property;
    private final TextField field;
    private final RegistrationImpl registration;
    
@@ -30,34 +27,26 @@ public class BoundTextProperty implements ResponsiveRegionProperty {
     * @param property the {@link ObjectProperty} to bind to.
     * @param editable whether the {@link TextField} is editable.
     */
-   public BoundTextProperty( ObjectProperty< Double > property, boolean editable ) {
-      this.conversions = new Conversions();
+   public BoundTextProperty( ObjectProperty< String > property, boolean editable ) {
       this.property = property;
       this.field = new TextField();
-      this.field.setText( conversions.doubleToStringFunction().apply( property.get() ) );
+      this.field.setText( property.get() );
       this.field.setEditable( editable );
       
-      this.registration = new ChangeListenerMismatchBindingImpl<>( 
-               property, field.textProperty(), 
-               conversions.stringToDoubleFunction(), conversions.doubleToStringFunction()
+      this.registration = new ChangeListenerBindingImpl<>( 
+               property, field.textProperty() 
       );
    }//End Constructor
    
-   /**
-    * {@inheritDoc}
-    */
    @Override public TextField region(){
       return field;
    }//End Method
    
-   /**
-    * {@inheritDoc}
-    */
    @Override public RegistrationImpl registration(){
       return registration;
    }//End Method
 
-   ObjectProperty< Double > property() {
+   ObjectProperty< String > property() {
       return property;
    }//End Method
 
