@@ -29,7 +29,6 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
-import uk.dangrew.kode.utility.io.IoCommon;
 
 /**
  * Common test values and properties used.
@@ -37,7 +36,6 @@ import uk.dangrew.kode.utility.io.IoCommon;
 public final class TestCommon {
    
    private static final double PRECISION = 0.001;
-   private static final IoCommon ioCommon = new IoCommon();
    
    private TestCommon(){}
    

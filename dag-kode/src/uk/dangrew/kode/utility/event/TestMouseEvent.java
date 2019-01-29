@@ -5,6 +5,8 @@ import javafx.scene.input.MouseEvent;
 
 public class TestMouseEvent extends MouseEvent {
 
+   private static final long serialVersionUID = 1L;
+
    public TestMouseEvent() {
       super( 
                null, null, null, 
