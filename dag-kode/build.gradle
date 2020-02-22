@@ -53,9 +53,10 @@ sourceSets {
  * DEPENDENCIES: define repos for resolving and dependencies to resolve
  */
 repositories {
-     maven { url  "http://dl.bintray.com/dangrew/SystemDigest" }
-     maven { url  "http://dl.bintray.com/dangrew/JsonUpgradingPersistenceArchitecture" }
-     maven { url "http://repo.maven.apache.org/maven2" }
+    mavenCentral()
+    maven { url  "http://dl.bintray.com/dangrew/SystemDigest" }
+    maven { url  "http://dl.bintray.com/dangrew/JsonUpgradingPersistenceArchitecture" }
+    maven { url "http://repo.maven.apache.org/maven2" }
 }
 
 dependencies {
