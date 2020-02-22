@@ -8,7 +8,11 @@
  */
 package uk.dangrew.kode.utility.io;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**
@@ -38,5 +42,18 @@ public class IoCommon {
       Scanner scanner = new Scanner( stream );
       return readScannerContentAndClose( scanner );
    }//End Method
+
+   /**
+    * Method to read a text file into a {@link String}.
+    * @param file the {@link File} to read from.
+    * @return the {@link String} containing all text from the {@link File}.
+    */
+   public String readFileIntoString(File file){
+      try {
+         return new String( Files.readAllBytes( Paths.get(file.getAbsolutePath()) ) );
+      } catch (IOException e) {
+         return null;
+      }
+   }
    
 }//End Class
