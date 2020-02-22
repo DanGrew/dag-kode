@@ -2,7 +2,7 @@
  * PLGUINS: apply all plugins needed for the build
  */
 plugins {
-    id "com.jfrog.bintray" version "1.6"
+    id "com.jfrog.bintray" version "1.8.1"
 }
 
 allprojects { 
@@ -19,7 +19,7 @@ description = """Dan Grew's Development Kit"""
 group = 'uk.dangrew'
 
 def buildNumberFromEnvironment = System.getenv()[ 'VERSION_NUMBER' ]
-def buildNumberForThisEnvironment = ( buildNumberFromEnvironment != null ? buildNumberFromEnvironment : 'WORKSPACE' ) 
+def buildNumberForThisEnvironment = ( buildNumberFromEnvironment != null ? buildNumberFromEnvironment : 'WORKSPACE-1' )
 version = buildNumberForThisEnvironment
 
 /*
@@ -144,7 +144,7 @@ publishing {
         core(MavenPublication) {
         	//publish all items
             from components.java
-            
+
         	//configure description
             groupId group
             artifactId 'dag-kode'
