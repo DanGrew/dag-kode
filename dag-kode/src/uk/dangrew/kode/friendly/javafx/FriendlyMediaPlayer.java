@@ -8,8 +8,11 @@
  */
 package uk.dangrew.kode.friendly.javafx;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 /**
  * Friendly wrapper for the final {@link MediaPlayer}.
@@ -17,7 +20,7 @@ import javafx.scene.media.MediaPlayer;
 public class FriendlyMediaPlayer {
    
    private final MediaPlayer mediaPlayer;
-   
+
    /**
     * Constructs a new {@link FriendlyMediaPlayer}.
     * @param media the {@link Media}.
@@ -25,7 +28,7 @@ public class FriendlyMediaPlayer {
    public FriendlyMediaPlayer( Media media ) {
       this.mediaPlayer = new MediaPlayer( media );
    }//End Constructor
-   
+
    /**
     * {@link MediaPlayer#play()}
     */
@@ -33,6 +36,30 @@ public class FriendlyMediaPlayer {
       mediaPlayer.play();
    }//End Method
    
+   public void friendly_pause(){
+      mediaPlayer.pause();
+   }
+
+   public void friendly_stop(){
+      mediaPlayer.stop();
+   }
+
+   public void friendly_seek(Duration duration){
+      mediaPlayer.seek(duration);
+   }
+
+   public void friendly_setRate(double value){
+      mediaPlayer.setRate(value);
+   }
+
+   public ReadOnlyObjectProperty<Duration> friendly_currentTimeProperty(){
+      return mediaPlayer.currentTimeProperty();
+   }
+
+   public DoubleProperty friendly_rateProperty(){
+      return mediaPlayer.rateProperty();
+   }
+
    /**
     * {@link MediaPlayer#setOnEndOfMedia(Runnable)}
     */
