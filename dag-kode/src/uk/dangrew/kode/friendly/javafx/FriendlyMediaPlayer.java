@@ -29,13 +29,17 @@ public class FriendlyMediaPlayer {
       this.mediaPlayer = new MediaPlayer( media );
    }//End Constructor
 
+   public MediaPlayer getMediaPlayer() {
+      return mediaPlayer;
+   }
+
    /**
     * {@link MediaPlayer#play()}
     */
    public void friendly_play(){
       mediaPlayer.play();
    }//End Method
-   
+
    public void friendly_pause(){
       mediaPlayer.pause();
    }
@@ -66,5 +70,4 @@ public class FriendlyMediaPlayer {
    public void friendly_setOnEndOfMedia( Runnable runnable ) {
       mediaPlayer.setOnEndOfMedia( runnable );
    }//End Method
-
 }//End Class
