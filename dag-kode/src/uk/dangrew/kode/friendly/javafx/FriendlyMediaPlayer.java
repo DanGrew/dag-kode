@@ -10,6 +10,7 @@ package uk.dangrew.kode.friendly.javafx;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
@@ -58,6 +59,10 @@ public class FriendlyMediaPlayer {
 
    public ReadOnlyObjectProperty<Duration> friendly_currentTimeProperty(){
       return mediaPlayer.currentTimeProperty();
+   }
+
+   public ReadOnlyObjectProperty<Duration> friendly_durationProperty() {
+      return mediaPlayer.totalDurationProperty();
    }
 
    public DoubleProperty friendly_rateProperty(){
