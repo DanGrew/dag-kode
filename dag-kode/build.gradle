@@ -82,10 +82,8 @@ dependencies {
  * UNIT TESTS: configure reports and scope of tests
  */
 test {
-    filter {
-//test intermingled unit + integ - arguably against conventions
-        includeTestsMatching "*Test"
-    }
+    filter.includeTestsMatching "*Test"
+
     testLogging {
         events "passed", "skipped", "failed", "standardOut", "standardError"
     }
@@ -99,9 +97,7 @@ test {
  * INTEGRATION TESTS: configure reports and scope of tests
  */
 task integrationTests( type: Test ) {
-  	filter {
-  		includeTestsMatching "*IT"
-  	}
+  	filter.includeTestsMatching "*IT"
   
 	testLogging.events = test.testLogging.events
 	reports.junitXml.enabled = test.reports.junitXml.enabled
@@ -150,6 +146,7 @@ publishing {
         core(MavenPublication) {
         	//publish all items
             from components.java
+
 
         	//configure description
             groupId group
