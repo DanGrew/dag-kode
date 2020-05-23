@@ -27,7 +27,8 @@ public class Comparators {
          }
       }
    };
-   
+
+
    /**
     * Method to compare two {@link String}s. Note accepts nulls.
     * @param o1 the first.
