@@ -36,4 +36,14 @@ public class ConversionsTest {
       assertThat( systemUnderTest.nullableStringToDoubleFunction().apply( null ), is( nullValue() ) );
    }//End Method
 
+   @Test public void shouldConvertIntegersToStrings() {
+      assertThat( systemUnderTest.integerToStringFunction().apply( 1234 ), is( "1234" ) );
+      assertThat( systemUnderTest.integerToStringFunction().apply( null ), is( "0" ) );
+   }//End Method
+
+   @Test public void shouldConvertStringsToIntegers() {
+      assertThat( systemUnderTest.stringToIntegerFunction().apply( "25" ), is( 25 ) );
+      assertThat( systemUnderTest.stringToIntegerFunction().apply( "anything" ), is( 0 ) );
+   }//End Method
+
 }//End Class

@@ -46,7 +46,7 @@ public final class TestCommon {
    public static final double precision(){
       return PRECISION;
    }//End Method
-   
+
    /**
     * Method to assert that all values of the enum map using {@link Enum#valueOf(Class, String)} to {@link Enum#name()}.
     * @param enumClass the {@link Enum} {@link Class} to prove.

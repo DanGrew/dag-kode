@@ -17,7 +17,26 @@ import java.util.function.Function;
 public class Conversions {
    
    private static final DecimalFormat FORMAT = new DecimalFormat( "###.##" );
-   
+
+   private static final Function< Integer, String > INTEGER_TO_STRING = d -> {
+      if ( d == null ) {
+         return "0";
+      }
+      try {
+         return String.valueOf( d );
+      } catch ( IllegalArgumentException e ) {
+         return "0";
+      }
+   };
+
+   private static final Function< String, Integer > STRING_TO_INTEGER = s -> {
+      try {
+         return Integer.valueOf( s );
+      } catch ( NumberFormatException e ) {
+         return 0;
+      }
+   };
+
    private static final Function< Double, String > DOUBLE_TO_STRING = d -> {
       try {
          return FORMAT.format( d );
@@ -69,9 +88,25 @@ public class Conversions {
    public Function< String, Double > stringToDoubleFunction() {
       return STRING_TO_DOUBLE;
    }//End Method
-   
+
    public Function< String, Double > nullableStringToDoubleFunction() {
       return NULLABLE_STRING_TO_DOUBLE;
    }//End Method
-   
+
+   /**
+    * Access to a {@link Function} that converts {@link Integer}s to {@link String}s safely.
+    * @return the {@link Function}.
+    */
+   public Function< Integer, String > integerToStringFunction() {
+      return INTEGER_TO_STRING;
+   }//End Method
+
+   /**
+    * Access to a {@link Function} that converts {@link String}s to {@link Integer}s safely.
+    * @return the {@link Function}.
+    */
+   public Function< String, Integer > stringToIntegerFunction() {
+      return STRING_TO_INTEGER;
+   }//End Method
+
 }//End Class
