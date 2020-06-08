@@ -1,10 +1,12 @@
 env.VERSION_NUMBER = "1.0.${BUILD_NUMBER}"
 
-tools {
-    jdk 'jdk 14'
-}
 
 node {
+  jdk = tool name: 'jdk 14'
+  env.JAVA_HOME = "${jdk}"
+
+  echo "jdk installation path is: ${jdk}"
+
     stage 'Checkout'
         git url: 'https://github.com/DanGrew/dag-kode.git'
 
