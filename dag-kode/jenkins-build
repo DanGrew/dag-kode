@@ -4,6 +4,10 @@ node {
     stage 'Checkout'
         git url: 'https://github.com/DanGrew/dag-kode.git'
 
+  tools {
+    jdk 'jdk 14'
+  }
+
     dir( 'dag-kode' ) {
         stage 'Clean'
             sh "./gradlew clean"
