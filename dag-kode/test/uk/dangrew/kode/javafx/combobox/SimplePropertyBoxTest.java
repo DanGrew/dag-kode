@@ -8,18 +8,15 @@
  */
 package uk.dangrew.kode.javafx.combobox;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-
-import org.junit.Before;
-import org.junit.Test;
-
-import com.sun.javafx.application.PlatformImpl;
-
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import uk.dangrew.kode.javafx.combobox.SimplePropertyBox;
+import org.junit.Before;
+import org.junit.Test;
+import uk.dangrew.kode.javafx.platform.JavaFxThreading;
 import uk.dangrew.kode.launch.TestApplication;
+
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 /**
  * {@link SimplePropertyBox} test.
@@ -31,7 +28,7 @@ public class SimplePropertyBoxTest {
    
    @Before public void initialiseSystemUnderTest(){
       TestApplication.startPlatform();
-      PlatformImpl.runAndWait( () -> {
+      JavaFxThreading.runAndWait( () -> {
          property = new SimpleObjectProperty<>();
          systemUnderTest = new SimplePropertyBox<>();
          systemUnderTest.bindProperty( property );

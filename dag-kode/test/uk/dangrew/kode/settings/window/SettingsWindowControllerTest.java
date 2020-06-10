@@ -20,6 +20,7 @@ import com.sun.javafx.application.PlatformImpl;
 
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
+import uk.dangrew.kode.javafx.platform.JavaFxThreading;
 import uk.dangrew.kode.launch.TestApplication;
 import uk.dangrew.kode.settings.window.SettingsWindowController;
 
@@ -68,7 +69,7 @@ public class SettingsWindowControllerTest {
    @Test public void stageShouldShowWhenTold(){
       assertThat( systemUnderTest.stage().isShowing(), is( false ) );
       systemUnderTest.showSettingsWindow();
-      PlatformImpl.runAndWait( () -> {} );
+      JavaFxThreading.runAndWait();
       assertThat( systemUnderTest.stage().isShowing(), is( true ) );
       assertThat( systemUnderTest.isSettingsWindowShowing(), is( true ) );
    }//End Method
@@ -77,7 +78,7 @@ public class SettingsWindowControllerTest {
       stageShouldShowWhenTold();
       assertThat( systemUnderTest.stage().isShowing(), is( true ) );
       systemUnderTest.hideSettingsWindow();
-      PlatformImpl.runAndWait( () -> {} );
+      JavaFxThreading.runAndWait();
       assertThat( systemUnderTest.stage().isShowing(), is( false ) );
       assertThat( systemUnderTest.isSettingsWindowShowing(), is( false ) );
    }//End Method

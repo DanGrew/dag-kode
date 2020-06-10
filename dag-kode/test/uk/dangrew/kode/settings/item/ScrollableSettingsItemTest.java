@@ -13,6 +13,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 
+import javafx.scene.layout.Pane;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -31,9 +32,9 @@ public class ScrollableSettingsItemTest {
    private static final String NAME = "any name";
    
    @Mock private SettingsItemType type;
-   @Mock private Node contentTitle;
+   private Node contentTitle;
    @Mock private SettingsController controller;
-   @Mock private Node content;
+   private Node content;
    
    private ScrollableSettingsItem systemUnderTest;
    
@@ -49,6 +50,8 @@ public class ScrollableSettingsItemTest {
    @Before public void initialiseSystemUnderTest() {
       TestApplication.startPlatform();
       MockitoAnnotations.initMocks( this );
+      contentTitle = new Pane();
+      content = new Pane();
       systemUnderTest = new TestableScrollableItem( type, NAME, contentTitle, controller, content );
    }//End Method
 

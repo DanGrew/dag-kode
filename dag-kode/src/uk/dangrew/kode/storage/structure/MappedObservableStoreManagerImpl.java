@@ -36,7 +36,7 @@ public class MappedObservableStoreManagerImpl< KeyTypeT, ObjectTypeT > implement
    public MappedObservableStoreManagerImpl( Function< ObjectTypeT, KeyTypeT > keyExtractor ) {
       this.keyExtractor = keyExtractor;
       this.objectMap = new HashMap<>();
-      this.objectList = new SynchronizedObservableList<>( FXCollections.observableArrayList() );
+      this.objectList = new SynchronizedObservableList<>();
       this.publiclyAvailableObjectList = new PrivatelyModifiableObservableListImpl<>( objectList );
    }//End Constructor
    

@@ -8,16 +8,15 @@
  */
 package uk.dangrew.kode.settings.window;
 
-import com.sun.javafx.application.PlatformImpl;
-
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import uk.dangrew.kode.javafx.platform.JavaFxThreading;
 
 /**
  * The {@link SettingsWindowController} is responsible for controlling a
  * {@link uk.dangrew.kode.settings.tree.SettingsTreePane} in a separate {@link Stage}. Note that this requires
- * the {@link PlatformImpl} {@link Thread} therefore some of these calls are run later.
+ * the JavaFx {@link Thread} therefore some of these calls are run later.
  */
 public class SettingsWindowController {
    
@@ -32,7 +31,7 @@ public class SettingsWindowController {
             Parent configurationWindow
    ) {
          Scene settingsScene = new Scene( configurationWindow );
-         PlatformImpl.runAndWait( () -> {
+         JavaFxThreading.runAndWait( () -> {
             windowStage = new Stage();
             windowStage.setTitle( WINDOW_TITLE );
             windowStage.setWidth( WIDTH );
@@ -51,7 +50,7 @@ public class SettingsWindowController {
    
    public void showSettingsWindow(){
       verifyState();
-      PlatformImpl.runLater( () -> { 
+      JavaFxThreading.runLater( () -> {
          windowStage.show();
          windowStage.toFront();
       } );
@@ -59,7 +58,7 @@ public class SettingsWindowController {
    
    public void hideSettingsWindow(){
       verifyState();
-      PlatformImpl.runLater( () -> windowStage.hide() );
+      JavaFxThreading.runLater( () -> windowStage.hide() );
    }//End Method
    
    public boolean isSettingsWindowShowing(){

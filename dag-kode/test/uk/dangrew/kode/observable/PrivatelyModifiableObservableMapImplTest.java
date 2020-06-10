@@ -21,6 +21,7 @@ import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableMap;
+import uk.dangrew.kode.synchronization.SynchronizedObservableMap;
 
 public class PrivatelyModifiableObservableMapImplTest {
 
@@ -28,7 +29,7 @@ public class PrivatelyModifiableObservableMapImplTest {
    private PrivatelyModifiableObservableMapImpl< Object, Object > systemUnderTest;
 
    @Before public void initialiseSystemUnderTest() {
-      backingMap = spy( FXCollections.observableHashMap() );
+      backingMap = spy( new SynchronizedObservableMap<>());
       systemUnderTest = new PrivatelyModifiableObservableMapImpl<>( backingMap );
    }//End Method
 

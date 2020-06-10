@@ -8,11 +8,10 @@
  */
 package uk.dangrew.kode.settings.tree;
 
-import com.sun.javafx.application.PlatformImpl;
-
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import uk.dangrew.kode.javafx.platform.JavaFxThreading;
 import uk.dangrew.kode.settings.item.SettingsItem;
 import uk.dangrew.kode.settings.item.SettingsItemType;
 import uk.dangrew.kode.settings.item.SettingsRootItem;
@@ -39,7 +38,7 @@ public class SettingsTree extends TreeView< SettingsItem > {
    }//End Method
    
    public void select( SettingsItemType item ) {
-      item.find( this ).ifPresent( treeItem -> PlatformImpl.runAndWait( () -> getSelectionModel().select( treeItem ) ) );
+      item.find( this ).ifPresent( treeItem -> JavaFxThreading.runAndWait( () -> getSelectionModel().select( treeItem ) ) );
    }//End Method
    
 }//End Class

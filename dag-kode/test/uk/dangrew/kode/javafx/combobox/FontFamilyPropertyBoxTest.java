@@ -19,11 +19,10 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sun.javafx.application.PlatformImpl;
-
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.text.Font;
+import uk.dangrew.kode.javafx.platform.JavaFxThreading;
 import uk.dangrew.kode.launch.TestApplication;
 import uk.dangrew.kode.styling.FontFamilies;
 
@@ -47,7 +46,7 @@ public class FontFamilyPropertyBoxTest {
     */
    private void launchBox(){
       TestApplication.startPlatform();
-      PlatformImpl.runAndWait( () -> {
+      JavaFxThreading.runAndWait( () -> {
          systemUnderTest = new FontFamilyPropertyBox( property );
       } );
    }//End Method

@@ -13,12 +13,12 @@ import static org.junit.Assert.fail;
 import java.util.concurrent.CountDownLatch;
 import java.util.function.Supplier;
 
-import com.sun.javafx.application.PlatformImpl;
-
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import uk.dangrew.kode.javafx.platform.JavaFxThreading;
 
 /**
  * The {@link TestApplication} provides a JavaFx {@link Application} that can be used to launch
@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 public class TestApplication extends Application {
 
    private Parent center;
-   
+
    /**
     * Constructs a new {@link TestApplication} with a {@link Parent} to display.
     * @param center the {@link Parent}.
@@ -35,7 +35,7 @@ public class TestApplication extends Application {
    public TestApplication( Parent center ) {
       this.center = center;
    }//End Constructor
-   
+
    /**
     * {@inheritDoc}
     */
@@ -45,7 +45,7 @@ public class TestApplication extends Application {
       primaryStage.setScene( scene );
       primaryStage.show();
    }//End Method
-   
+
    /**
     * Method to launch a {@link TestApplication} in a simple way, using a {@link Supplier} so that
     * the graphical {@link Parent} is constructed on the JavaFx {@link Thread}.
@@ -54,7 +54,7 @@ public class TestApplication extends Application {
    public static void launch( Supplier< Parent > supplier ) throws InterruptedException {
       launch( supplier, true );
    }//End Method
-   
+
    /**
     * Method to launch a {@link TestApplication} in a simple way, using a {@link Supplier} so that
     * the graphical {@link Parent} is constructed on the JavaFx {@link Thread}.
@@ -62,8 +62,9 @@ public class TestApplication extends Application {
     * @param max whether to launch maximized.
     */
    public static void launch( Supplier< Parent > supplier, boolean max ) throws InterruptedException {
+      JavaFxThreading.startup();
       CountDownLatch latch = new CountDownLatch( 1 );
-      PlatformImpl.startup( () -> {
+      JavaFxThreading.runAndWait( () -> {
          try {
             TestApplication application = new TestApplication( supplier.get() );
             Stage primaryStage = new Stage();
@@ -79,12 +80,14 @@ public class TestApplication extends Application {
       } );
       latch.await();
    }//End Method
-   
+
    /**
-    * Method to start the {@link PlatformImpl} if not already started.
+    * Method to start the {@link JavaFxThreading} if not already started.
+    * @deprecated use {@link JavaFxThreading#startup()}.
     */
+   @Deprecated
    public static void startPlatform(){
-      PlatformImpl.startup( () -> {} );
+      JavaFxThreading.startup();
    }//End Method
 
 }//End Class

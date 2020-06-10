@@ -8,34 +8,31 @@
  */
 package uk.dangrew.kode.synchronization;
 
-import static org.hamcrest.Matchers.contains;
-import static org.junit.Assert.assertThat;
+import org.junit.Before;
+import org.junit.Test;
+import uk.dangrew.kode.TestCommon;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import uk.dangrew.kode.TestCommon;
+import static org.hamcrest.Matchers.contains;
+import static org.junit.Assert.assertThat;
 
 /**
  * {@link SynchronizedObservableList} test.
  */
 public class SynchronizedObservableListTest {
 
-   private List< String > backingList;
    private SynchronizedObservableList< String > systemUnderTest;
    
    @Before public void initialiseSystemUnderTest(){
-      backingList = new ArrayList<>();
-      systemUnderTest = new SynchronizedObservableList<>( backingList );
+      systemUnderTest = new SynchronizedObservableList<>();
    }//End Method
    
    @Test public void addShouldCallThrough() {
       systemUnderTest.add( "anything" );
-      assertThat( backingList, contains( "anything" ) );
+      assertThat( systemUnderTest, contains( "anything" ) );
    }//End Method
    
    @Test public void foreachShouldCallThrough() {
@@ -53,7 +50,7 @@ public class SynchronizedObservableListTest {
    
    @Test public void addAndForeachShouldBeSynchronized() {
       systemUnderTest = new SynchronizedObservableList<>();
-      TestCommon.assertConcurrencyIsNotAnIssue( 
+      TestCommon.assertConcurrencyIsNotAnIssue(
                count -> systemUnderTest.add( "" + count ), 
                count -> systemUnderTest.forEach( item -> item.toString() ), 
                1000 

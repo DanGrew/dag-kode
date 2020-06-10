@@ -8,21 +8,17 @@
  */
 package uk.dangrew.kode.observable;
 
-import java.util.function.BiConsumer;
-
+import javafx.collections.FXCollections;
+import javafx.collections.MapChangeListener;
+import javafx.collections.MapChangeListener.Change;
+import javafx.collections.ObservableMap;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import com.sun.javafx.binding.MapExpressionHelper.SimpleChange;
-
-import javafx.collections.FXCollections;
-import javafx.collections.MapChangeListener;
-import javafx.collections.MapChangeListener.Change;
-import javafx.collections.ObservableMap;
-import uk.dangrew.kode.observable.FunctionMapChangeListenerImpl;
+import java.util.function.BiConsumer;
 
 /**
  * {@link FunctionMapChangeListenerImpl} test.

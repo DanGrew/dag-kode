@@ -8,24 +8,23 @@
  */
 package uk.dangrew.kode.synchronization;
 
+import javafx.collections.FXCollections;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import uk.dangrew.kode.TestCommon;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
+
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
-
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.BiConsumer;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
-import uk.dangrew.kode.TestCommon;
 
 /**
  * {@link SynchronizedObservableMap} test.
@@ -37,13 +36,13 @@ public class SynchronizedObservableMapTest {
    
    @Before public void initialiseSystemUnderTes(){
       MockitoAnnotations.initMocks( this );
-      systemUnderTest = new SynchronizedObservableMap<>( backingMap );
+      systemUnderTest = new SynchronizedObservableMap<>(backingMap);
    }//End Method
 
    @Test public void putAndForEachShouldBeSynchronizedAndNotCauseConcurrencyIssues() throws InterruptedException {
       systemUnderTest = new SynchronizedObservableMap<>();
       
-      TestCommon.assertConcurrencyIsNotAnIssue( 
+      TestCommon.assertConcurrencyIsNotAnIssue(
                i -> systemUnderTest.put( "" + i , "anything" ), 
                i -> systemUnderTest.forEach( ( key, value ) -> {} ),
                1000
@@ -61,7 +60,7 @@ public class SynchronizedObservableMapTest {
    }//End Method
    
    @Test public void forEachShouldCallForEachEntry(){
-      backingMap = new LinkedHashMap<>();
+      backingMap = FXCollections.observableHashMap();
       systemUnderTest = new SynchronizedObservableMap<>( backingMap );
       
       backingMap.put( "a", "b" );

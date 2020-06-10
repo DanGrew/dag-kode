@@ -10,12 +10,20 @@ public class FriendlyMouseEvent {
         this.mouseEvent = event;
     }
 
-    public double getX(){
+    public double friendly_getX(){
         return mouseEvent.getX();
     }
 
-    public double getY(){
+    public double friendly_getY(){
         return mouseEvent.getY();
+    }
+
+    public double friendly_getSceneX(){
+        return mouseEvent.getSceneX();
+    }
+
+    public double friendly_getSceneY(){
+        return mouseEvent.getSceneY();
     }
 
 }

@@ -4,6 +4,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 
+import javafx.scene.layout.Pane;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -18,14 +19,16 @@ public class SimpleSettingsItemTest {
    @Mock private SettingsController controller;
    @Mock private SettingsItemType type;
    private String itemName;
-   @Mock private Node contentTitle;
-   @Mock private Node content;
+   private Node contentTitle;
+   private Node content;
    private SimpleSettingsItem systemUnderTest;
 
    @Before public void initialiseSystemUnderTest() {
       TestApplication.startPlatform();
       MockitoAnnotations.initMocks( this );
-      
+
+      content = new Pane();
+      contentTitle = new Pane();
       itemName = "Name";
       systemUnderTest = new SimpleSettingsItem( 
                controller, 

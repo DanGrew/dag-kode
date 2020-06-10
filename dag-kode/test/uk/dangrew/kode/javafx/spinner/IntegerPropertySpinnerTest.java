@@ -14,11 +14,10 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.sun.javafx.application.PlatformImpl;
-
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory;
+import uk.dangrew.kode.javafx.platform.JavaFxThreading;
 import uk.dangrew.kode.launch.TestApplication;
 
 /**
@@ -30,7 +29,7 @@ public class IntegerPropertySpinnerTest {
    
    @Before public void initialiseSystemUnderTest(){
       TestApplication.startPlatform();
-      PlatformImpl.runAndWait( () -> {
+      JavaFxThreading.runAndWait( () -> {
          systemUnderTest = new IntegerPropertySpinner();
          systemUnderTest.setValueFactory( new IntegerSpinnerValueFactory( 0, 100 ) );
       } );

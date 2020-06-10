@@ -18,11 +18,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import com.sun.javafx.application.PlatformImpl;
-
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.control.SpinnerValueFactory;
+import uk.dangrew.kode.javafx.platform.JavaFxThreading;
 import uk.dangrew.kode.launch.TestApplication;
 
 /**
@@ -39,7 +38,7 @@ public class PropertySpinnerTest {
    
    @Before public void initialiseSystemUnderTest(){
       TestApplication.startPlatform();
-      PlatformImpl.runAndWait( () -> {
+      JavaFxThreading.runAndWait( () -> {
          systemUnderTest = new PropertySpinner<>();
          systemUnderTest.setValueFactory( new SpinnerValueFactory.IntegerSpinnerValueFactory( 1, 1000, 1 ) );
       } );
