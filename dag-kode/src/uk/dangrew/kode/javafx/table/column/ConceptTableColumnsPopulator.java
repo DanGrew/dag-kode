@@ -6,7 +6,9 @@
  *                 2017
  * ----------------------------------------
  */
-package uk.dangrew.kode.javafx.table;
+package uk.dangrew.kode.javafx.table.column;
+
+import uk.dangrew.kode.javafx.table.base.ConceptTable;
 
 /**
  * {@link ConceptTableColumnsPopulator} provides an interface for populating a {@link ConceptTable}.

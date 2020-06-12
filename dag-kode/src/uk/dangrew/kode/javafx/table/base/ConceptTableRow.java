@@ -1,4 +1,4 @@
-package uk.dangrew.kode.javafx.table;
+package uk.dangrew.kode.javafx.table.base;
 
 /**
  * Provides an interface for table rows in a {@link ConceptTable}.

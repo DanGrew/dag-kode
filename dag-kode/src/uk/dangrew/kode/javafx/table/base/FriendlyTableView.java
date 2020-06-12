@@ -6,7 +6,7 @@
  *                 2017
  * ----------------------------------------
  */
-package uk.dangrew.kode.javafx.table;
+package uk.dangrew.kode.javafx.table.base;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.SelectionModel;

@@ -6,9 +6,10 @@
  *                 2017
  * ----------------------------------------
  */
-package uk.dangrew.kode.javafx.table;
+package uk.dangrew.kode.javafx.table.controller;
 
 import uk.dangrew.kode.concept.Concept;
+import uk.dangrew.kode.javafx.table.base.ConceptTable;
 
 /**
  * {@link ConceptTableController} provides a controller interface for a {@link ConceptTable}.

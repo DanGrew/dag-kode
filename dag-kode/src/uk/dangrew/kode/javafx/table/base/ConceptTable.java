@@ -6,10 +6,12 @@
  *                 2017
  * ----------------------------------------
  */
-package uk.dangrew.kode.javafx.table;
+package uk.dangrew.kode.javafx.table.base;
 
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
+import uk.dangrew.kode.javafx.table.column.ConceptTableColumnsPopulator;
+import uk.dangrew.kode.javafx.table.controller.ConceptTableViewController;
 
 /**
  * {@link ConceptTable} provides a {@link TableView} for {@link uk.dangrew.kode.concept.Concept}s.
@@ -22,7 +24,7 @@ public class ConceptTable< TypeT >
    private final ConceptTableViewController< TypeT > controller;
 
    public ConceptTable( 
-            ConceptTableColumnsPopulator< TypeT > columnsPopulator, 
+            ConceptTableColumnsPopulator< TypeT > columnsPopulator,
             ConceptTableViewController< TypeT > controller
    ) {
       this.controller = controller;

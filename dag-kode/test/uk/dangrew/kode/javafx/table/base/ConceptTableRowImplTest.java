@@ -1,14 +1,13 @@
-package uk.dangrew.kode.javafx.table;
-
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+package uk.dangrew.kode.javafx.table.base;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
 import uk.dangrew.kode.concept.Concept;
+
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 public class ConceptTableRowImplTest {
 

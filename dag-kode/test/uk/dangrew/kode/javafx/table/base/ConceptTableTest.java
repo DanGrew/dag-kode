@@ -1,4 +1,4 @@
-package uk.dangrew.kode.javafx.table;
+package uk.dangrew.kode.javafx.table.base;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -12,6 +12,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import uk.dangrew.kode.concept.Concept;
+import uk.dangrew.kode.javafx.table.base.ConceptTable;
+import uk.dangrew.kode.javafx.table.base.ConceptTableRowImpl;
+import uk.dangrew.kode.javafx.table.column.ConceptTableColumnsPopulator;
+import uk.dangrew.kode.javafx.table.controller.ConceptTableViewController;
 import uk.dangrew.kode.launch.TestApplication;
 
 public class ConceptTableTest {

@@ -1,27 +1,23 @@
-package uk.dangrew.kode.javafx.table;
+package uk.dangrew.kode.javafx.table.tools;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.util.function.BiConsumer;
-
+import javafx.scene.control.TableColumn.CellEditEvent;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn.CellEditEvent;
+import java.util.function.BiConsumer;
 
-public class TreeTableEditCommitHandlerTest {
+import static org.mockito.Mockito.*;
+
+public class TableViewEditCommitHandlerTest {
 
    @Mock private BiConsumer< String, Double > consumer;
-   private TreeTableEditCommitHandler< String, Double > systemUnderTest;
+   private TableViewEditCommitHandler< String, Double > systemUnderTest;
 
    @Before public void initialiseSystemUnderTest() {
       MockitoAnnotations.initMocks( this );
-      systemUnderTest = new TreeTableEditCommitHandler<>( consumer );
+      systemUnderTest = new TableViewEditCommitHandler<>( consumer );
    }//End Method
 
    @Test public void shouldForwardCall() {
@@ -29,7 +25,7 @@ public class TreeTableEditCommitHandlerTest {
       String rowValue = "anything";
       Double newValue = 34587.0;
       
-      when( event.getRowValue() ).thenReturn( new TreeItem<>( rowValue ) );
+      when( event.getRowValue() ).thenReturn( rowValue );
       when( event.getNewValue() ).thenReturn( newValue );
       systemUnderTest.handle( event );
       verify( consumer ).accept( rowValue, newValue );

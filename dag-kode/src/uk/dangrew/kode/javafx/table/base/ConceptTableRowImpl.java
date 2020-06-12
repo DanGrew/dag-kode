@@ -6,7 +6,7 @@
  *                 2017
  * ----------------------------------------
  */
-package uk.dangrew.kode.javafx.table;
+package uk.dangrew.kode.javafx.table.base;
 
 /**
  * Basic implmentation of {@link ConceptTableRow}.
