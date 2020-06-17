@@ -26,11 +26,11 @@ version = buildNumberForThisEnvironment
 /*
  * SOURCE: source specific configuration
  */
-sourceCompatibility = 14
-targetCompatibility = 14
+sourceCompatibility = 11
+targetCompatibility = 11
 
 javafx {
-    version = "14"
+    version = "11"
     modules = [ 'javafx.base', 'javafx.controls', 'javafx.media', 'javafx.graphics']
 }
 
