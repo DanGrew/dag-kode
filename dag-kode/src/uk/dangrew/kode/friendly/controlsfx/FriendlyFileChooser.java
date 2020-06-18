@@ -70,7 +70,7 @@ public class FriendlyFileChooser {
     /**
      * {@link FileChooser#getExtensionFilters()}.
      *
-     * @return the {@link uk.dangrew.jtt.javafx.stage.FileChooser.ExtensionFilter} {@link ObservableList}.
+     * @return the {@link ExtensionFilter} {@link ObservableList}.
      */
     public ObservableList<ExtensionFilter> getExtensionFilters() {
         return fileChooser.getExtensionFilters();

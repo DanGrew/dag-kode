@@ -27,13 +27,13 @@ public class PropertySpinner< SpinnerTypeT, PropertyTypeT > extends Spinner< Spi
    private NodeBinder< SpinnerTypeT, PropertyTypeT > binder;
 
    /**
-    * Method to bind the given {@link ObjectProperty} to the {@link PropertyBox}, updating the property
+    * Method to bind the given {@link ObjectProperty} to the {@link uk.dangrew.kode.javafx.combobox.PropertyBox}, updating the property
     * when the selection changes, and updating the selection when the property changes.
     * @param property the {@link ObjectProperty} to bind with.
-    * @param boxToPropertyFunction the {@link Function} to convert from the {@link ComboBox} item
+    * @param boxToPropertyFunction the {@link Function} to convert from the {@link javafx.scene.control.ComboBox} item
     * to the {@link ObjectProperty} value.
     * @param propertyToBoxFunction the {@link Function} to convert from the {@link ObjectProperty} value
-    * to the {@link ComboBox} item.
+    * to the {@link javafx.scene.control.ComboBox} item.
     */
    public void bindProperty(
             ObjectProperty< PropertyTypeT > property, 
