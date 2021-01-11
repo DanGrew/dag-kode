@@ -337,24 +337,12 @@ public class JavaFxStyle {
    }//End Method
 
    /**
-    * Method to create a {@link Button} with the given {@link GlyphIcon} on it that resizes with the {@link Button}.
+    * Method to create a {@link Button} with the given {@link GlyphIcon} on it.
     * @param glyph the {@link GlyphIcon} to place on the {@link Button}. 
     * @return the {@link Button}.
     */
    public Button createGlyphButton( GlyphIcon< ? > glyph ) {
       Button button = new Button( "", glyph );
-      
-      ChangeListener< Number > glyphSizeUpdater = ( s, o, n ) -> {
-         glyph.glyphSizeProperty().set( Math.min( 
-                  button.getWidth(), 
-                  button.getHeight()
-         ) - 20 );
-      };
-      
-      glyphSizeUpdater.changed( null, button.getWidth(), button.getWidth() );
-      
-      button.widthProperty().addListener( glyphSizeUpdater );
-      button.heightProperty().addListener( glyphSizeUpdater );
       return button;
    }//End Method
    

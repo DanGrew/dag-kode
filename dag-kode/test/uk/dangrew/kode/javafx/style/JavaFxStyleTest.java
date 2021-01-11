@@ -20,6 +20,7 @@ import static org.mockito.Mockito.verify;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import de.jensd.fx.glyphs.GlyphIcon;
@@ -328,6 +329,7 @@ public class JavaFxStyleTest {
       assertThat( button.getGraphic(), is( glyph ) );
    }//End Method
    
+   @Ignore("Functionality for resizing has been removed following upgrade to glyph library. Left for context.")
    @Test public void shouldResizeGlyphInGlyphButton() throws InterruptedException{
       GlyphIcon< ? > glyph = new FontAwesomeIconView( FontAwesomeIcon.ADJUST );
       Button button = systemUnderTest.createGlyphButton( glyph );

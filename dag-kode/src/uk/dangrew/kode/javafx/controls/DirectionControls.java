@@ -93,13 +93,13 @@ public class DirectionControls extends BorderPane {
          }
       }
    }//End Method
-   
-   GridPane grid(){
-      return grid;
+
+   protected Button buttonFor( DirectionControlType type ) {
+      return buttons.get( type );
    }//End Method
 
-   Button buttonFor( DirectionControlType type ) {
-      return buttons.get( type );
+   GridPane grid(){
+      return grid;
    }//End Method
 
 }//End Class
