@@ -57,77 +57,17 @@ public class ThisOrThatFormatterTest {
     }
 
     @Test
-    public void shouldNotReuseWords(){
+    public void shouldNotReuseWords() {
 
     }
 
     @Test
     public void shouldFormatOutput_realExample() {
         sut.matchWords(new ArrayList<>(List.of(
-                "Ball",
-                "Bike",
-                "Binoculars",
-                "Car",
-                "Card",
-                "Chalk",
-                "Clown",
-                "Crib",
-                "Dollhouse",
-                "Domino",
-                "Drum",
-                "Frisbee",
-                "Helmet",
-                "Hulahoop",
-                "Jigsaw",
-                "Jumprope",
-                "Kaleidoscope",
-                "Kite",
-                "Maraca",
-                "Marker",
-                "Mask",
-                "Nerfgun",
-                "Plane",
-                "Puzzle",
-                "Quoits",
-                "Sandbox",
-                "Scooter",
-                "Skateboard",
-                "Teddy",
-                "Train",
-                "Xylophone",
-                "Zipper")), List.of(
-                "Boat",
-                "Lego",
-                "Inflatable",
-                "Cube",
-                "Top",
-                "Globe",
-                "Tower",
-                "Doll",
-                "Slingshot",
-                "Kickball",
-                "Dice",
-                "Puppet",
-                "Unicycle",
-                "Chalkboard",
-                "Lollipop",
-                "Velcroball",
-                "Balancebeam",
-                "Sled",
-                "Rocket",
-                "Crayon",
-                "Yoyo",
-                "Balloon",
-                "Easel",
-                "Bubble",
-                "Swing",
-                "Playdough",
-                "Origami",
-                "Fingerpuppet",
-                "Robot",
-                "Truck",
-                "Nestingdoll",
-                "Marbles"
+                "Ball,Bike,Binoculars,Car,Card,Chalk,Clown,Crib,Dollhouse,Domino,Drum,Frisbee,Helmet,Hulahoop,Jigsaw,Jumprope,Kaleidoscope,Kite,Maraca,Marker,Mask,Nerfgun,Plane,Puzzle,Quoits,Sandbox,Scooter,Skateboard,Teddy,Train,Xylophone,Zipper".split(","))
+        ), List.of(
+                "Boat,Lego,Inflatable,Cube,Top,Globe,Tower,Doll,Slingshot,Kickball,Dice,Puppet,Unicycle,Chalkboard,Lollipop,Velcroball,Balancebeam,Sled,Rocket,Crayon,Yoyo,Balloon,Easel,Bubble,Swing,Playdough,Origami,Fingerpuppet,Robot,Truck,Nestingdoll,Marbles".split(",")
+
         ));
 
         when(random.nextBoolean()).thenReturn(true);

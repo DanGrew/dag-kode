@@ -37,7 +37,7 @@ public class ThisOrThatFormatter {
         final var matched = new ArrayList<>();
         for (String gridWord : gridWords) {
             if (gridWord.equalsIgnoreCase("quoits")){
-                System.out.println();
+//                System.out.println();
             }
             int length = gridWord.length();
             final var match = matchList.stream()
