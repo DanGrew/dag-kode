@@ -62,7 +62,9 @@ public class ThisOrThatFormatterTest {
     }
 
     @Test
-    public void shouldFormatOutput_realExample() {
+    public void generator() {
+        sut = new ThisOrThatFormatter(new Random());
+
         sut.matchWords(new ArrayList<>(List.of(
                 "Ball,Bike,Binoculars,Car,Card,Chalk,Clown,Crib,Dollhouse,Domino,Drum,Frisbee,Helmet,Hulahoop,Jigsaw,Jumprope,Kaleidoscope,Kite,Maraca,Marker,Mask,Nerfgun,Plane,Puzzle,Quoits,Sandbox,Scooter,Skateboard,Teddy,Train,Xylophone,Zipper".split(","))
         ), List.of(

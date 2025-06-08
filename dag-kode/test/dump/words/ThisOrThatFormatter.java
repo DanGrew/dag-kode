@@ -66,7 +66,8 @@ public class ThisOrThatFormatter {
     }
 
     public List<String> buildWordList() {
-        return matches.entrySet().stream()//.sorted(Comparator.comparing(e -> e.getKey(), String::compareToIgnoreCase))
+        return matches.entrySet().stream()
+                .sorted(Comparator.comparing(e -> e.getKey(), String::compareToIgnoreCase))
                 .map(e -> format(e.getKey(), e.getValue()))
                 .collect(Collectors.toList());
     }
